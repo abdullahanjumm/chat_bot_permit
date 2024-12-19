@@ -10,38 +10,38 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container-fluid chat-ui">
+    <div class="container-fluid chat-ui d-flex flex-column vh-100">
         <!-- Header Section -->
-        <div class="row bg-dark text-white py-3">
-            <div class="col-12 text-center">
-                <h1 class="h3">ChatGPT Clone</h1>
+        <header class="row bg-dark text-white py-2">
+            <div class="col text-center">
+                <h1 class="h4">ChatGPT Clone</h1>
             </div>
-        </div>
+        </header>
 
         <!-- Chat Body Section -->
-        <div class="row chat-body">
-            <div class="col-12 py-3">
+        <main class="row flex-grow-1 overflow-auto">
+            <div class="col py-3">
                 <div class="messages">
-                    <!-- Chat messages -->
-                    <div class="message user-message p-3 mb-3 bg-light rounded">
-                        Hi, how can I help you today?
+                    <!-- Sample messages -->
+                    <div class="message user-message p-3 mb-2 bg-primary text-white rounded align-self-end">
+                        Hello! How can I assist you today?
                     </div>
-                    <div class="message bot-message p-3 mb-3 bg-success text-white rounded">
-                        I need assistance with creating a ChatGPT UI.
+                    <div class="message bot-message p-3 mb-2 bg-light border rounded align-self-start">
+                        I’m trying to build a responsive ChatGPT UI clone.
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
 
         <!-- Input Section -->
-        <div class="row bg-light py-3">
-            <div class="col-10">
+        <footer class="row bg-light py-2">
+            <div class="col-10 col-md-11">
                 <input type="text" class="form-control" placeholder="Type your message...">
             </div>
-            <div class="col-2">
+            <div class="col-2 col-md-1">
                 <button class="btn btn-primary w-100">Send</button>
             </div>
-        </div>
+        </footer>
     </div>
 
     <!-- Bootstrap JS -->

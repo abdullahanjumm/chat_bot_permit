@@ -1,28 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
 }
 
 .chat-ui {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.chat-body {
-    flex: 1;
-    overflow-y: auto;
-    background-color: #e9ecef;
-    padding: 20px;
 }
 
 .messages {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .message {
     max-width: 70%;
+    word-wrap: break-word;
 }
 
 .user-message {
@@ -31,4 +25,8 @@ body {
 
 .bot-message {
     align-self: flex-start;
+}
+
+footer {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
