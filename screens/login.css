@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(rgba(131, 138, 199, 0.63), rgb(216, 216, 216)), url(Frame.png) no-repeat center bottom;
+  align-items: center;
+  min-height: 100vh; /* Ensure the body takes the full screen height */
+  margin: 0; /* Remove default body margin */
+}
+
+.ahad-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f9f9f9;
+
+  max-width: 900px;
+  height: 600px;
+  width: 100%; /* Ensures responsiveness */
+  /* border: 2px solid rgb(226, 226, 226); */
+  border-radius: 15px;
+  box-shadow: 2px -1px 20px 20px rgba(0, 0, 0, 0.1), 0 1px 3px rgb(4 4 4 / 0%);
+  overflow: hidden; /* Ensures content stays inside rounded corners */
+}
+
+/* Left Section */
+.ahad-left-section {
+  flex: 1;
+  background-color: #f9f9f9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-left: 30px;
+}
+
+.ahad-bg-pattern {
+  background-image: url('bg.png'); /* Replace with actual checker background */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.ahad-content {
+  z-index: 2;
+  text-align: center;
+}
+
+.ahad-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: -20px;
+}
+
+.ahad-stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.ahad-stat {
+  background-color: #B7825F;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.ahad-stat h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ahad-stat p {
+  font-size: 16px;
+}
+
+.ahad-stat span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+/* Right Section */
+.ahad-right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin-right: 20px;
+  background-color: #fff;
+}
+
+.ahad-logo img {
+  max-width: 300px;
+  margin-bottom: 40px;
+}
+
+.ahad-right-section h1 {
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.ahad-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.ahad-form label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.ahad-form input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #ececed;
+}
+
+.ahad-password {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ahad-login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0075FF;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+
+  border: 2px solid #0075FF;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.ahad-login-button:hover {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #0075FF;
+  border: 2px solid #0075FF;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .ahad-container {
+    flex-direction: column;
+    margin:10px 20px ;
+  }
+
+  .ahad-left-section {
+    display: none;
+    order: 2;
+  }
+
+  .ahad-right-section {
+    order: 1;
+    margin-right: 0px;
+    padding: 10px;
+  }
+  .ahad-right-section h1{
+    font-size: 20px;
+  }
+}
