@@ -188,7 +188,7 @@
     
 =======
         <div class="d-none d-md-flex flex-column bg-light text-white p-3"
-        style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
+            style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
             <div class="text-center mb-4">
                 <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;">
             </div>
@@ -301,31 +301,161 @@
 >>>>>>> fc77b740df16f7c31208342e6737ff782e9440d0
         </div>
 
-
         <!-- Toggle Button for Sidebar -->
-        <button class="btn btn-primary d-md-none m-2" type="button" data-bs-toggle="offcanvas"
+        <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
-            style="width: 100px; height: 50px; display: flex; justify-content: center; align-items: center; gap: 10px;">
-            <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-            <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-            <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
+            style="width: 50px; height: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; z-index: 1050; position: relative; background-color: white;">
+            <img src="assets/Vector.svg" alt="Icon" style="width: 25px; height: 25px;">
         </button>
 
-        <!-- Chat -->
-<<<<<<< HEAD
 
-        <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex align-items-center justify-content-center">
-            <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%;">
-                <!-- Messages Display Area -->
-                
-                <!-- Input Section -->
-                <h3 class="text-center mb-4" id="typewriter"> </h3>
+
+        <!-- Offcanvas Sidebar -->
+        <div class="offcanvas offcanvas-start bg-white text-dark" tabindex="-1" id="offcanvasSidebar"
+            aria-labelledby="offcanvasSidebarLabel">
+          
+            <div class="offcanvas-body">
+                <!-- Sidebar Content -->
+                <div class="text-center mb-4">
+                    <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;">
+                </div>
+                <ul class="nav flex-column" style="font-size: 12px;">
+                    <li class="nav-item mb-2" style="border: none;">
+                        <a href="#" class="nav-link text-dark fw-bold">Today</a>
+                    </li>
+                    <ul class="list-group" style="padding-left: 0; list-style-type: none;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12345 - Ali Khan
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12346 - Sara Ahmad
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12347 - Faisal Kareem
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                    </ul>
+                    <li class="nav-item mb-2" style="border: none;">
+                        <a href="#" class="nav-link text-dark fw-bold">Yesterday</a>
+                    </li>
+                    <ul class="list-group" style="padding-left: 0; list-style-type: none;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12345 - Ali Khan
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12346 - Sara Ahmad
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12347 - Faisal Kareem
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                    </ul>
+                    <li class="nav-item mb-2" style="border: none;">
+                        <a href="#" class="nav-link text-dark fw-bold">Previous 7 Days</a>
+                    </li>
+                    <ul class="list-group" style="padding-left: 0; list-style-type: none;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12345 - Ali Khan
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12346 - Sara Ahmad
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12347 - Faisal Kareem
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                    </ul>
+                    <li class="nav-item" style="border: none;">
+                        <a href="#" class="nav-link text-dark fw-bold">Previous 30 Days</a>
+                    </li>
+                    <ul class="list-group" style="padding-left: 0; list-style-type: none;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12345 - Ali Khan
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12346 - Sara Ahmad
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12347 - Faisal Kareem
+                            <span class="badge bg-danger rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12346 - Sara Ahmad
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            style="border: none; background-color: transparent;">
+                            REF12347 - Faisal Kareem
+                            <span class="badge bg-success rounded-circle"
+                                style="width: 20px; height: 20px; border: 2px solid white;"> </span>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <!-- Chat -->
+        <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex flex-column">
+            <!-- Header Section -->
+            <header class="d-flex justify-content-end p-3"
+                style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; align-items: center; background-color: white;">
+                <!-- Notification Bell Icon -->
+                <div class="notification-icon" style="position: relative; margin-right: 20px;">
+                    <img src="assets/Shape.svg" alt="Profile" style="width: 30px; height: 30px; ">
+                    <span class="badge"
+                        style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; font-size: 0.8rem; padding: 2px 5px; border-radius: 50%;">3</span>
+                </div>
+                <!-- Profile Icon -->
+                <div class="profile-icon"
+                    style="width: 30px; height: 30px; border-radius: 50%; background-color: #333333; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; font-weight: bold;">
+                    A
+                </div>
+            </header>
+            <!-- Content Section -->
+            <div class="input-container d-flex flex-column align-items-center"
+                style="max-width: 1200px; width: 100%; margin-top: 130vh; margin-bottom: 10%;">
+                <h3 style="margin-bottom: 20px; font-family: Arial, sans-serif; font-weight: 600; color: #333333;">
+                    What can I help with?
+                </h3>
                 <div id="messageDisplay"
                     style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
                     <!-- Messages will appear here dynamically -->
                 </div>
                 <div class="input-group" style="position: relative; max-width: 100%; background-color: #f4f4f4; border-radius: 30px; padding:
-                    10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <span class="input-group-text bg-transparent border-0">
                         <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
                     </span>
@@ -333,233 +463,25 @@
                         style="background-color: #f4f4f4; border: none; outline: none; font-size: 1rem; padding: 10px 15px; width: 100%; border-radius: 30px;">
                     <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
                         <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
-                        id="sendButton"
-                        style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
-                        <!-- Add your image here -->
-                        <img src="assets/Vector.png" alt="Icon"
-                            style="width: 24px; height: 24px; position: absolute;">
-                        <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
-                    </button>
-                    </div>
-                </div>
-       
-    
-
-
-                <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex flex-column">
-                    <!-- Chat Section -->
-                  
-                
-                
-                    <!-- Main Content Section -->
-                    <div class="main-content">
-                        <div class="header">
-                            <h1>Add New Request (Health Permit)</h1>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Enter Patient Name To Check Status">
-                            </div>
-                        </div>
-                        <div class="form-section">
-                            <h3>Basic Information</h3>
-                            <form>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="patientName" class="form-label">Patient Name</label>
-                                        <input type="text" class="form-control" id="patientName" placeholder="Enter Patient Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="position" class="form-label">Position</label>
-                                        <select id="position" class="form-select">
-                                            <option>Choose Position</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="department" class="form-label">Department</label>
-                                        <select id="department" class="form-select">
-                                            <option>Choose Department</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="joinDate" class="form-label">Date of Joining</label>
-                                        <input type="date" class="form-control" id="joinDate">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" id="phoneNumber" placeholder="000 - 000 - 0000">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="email" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="@example.com">
-                                    </div>
-                                </div>
-                                <h3>Medical Information</h3>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="bloodGroup" class="form-label">Blood Group</label>
-                                        <input type="text" class="form-control" id="bloodGroup" placeholder="Enter Blood Group">
-                                    </div>
-                                </div>
-                                <h3>Documents</h3>
-                                <div class="upload-doc">
-                                    <button class="btn btn-secondary">Upload Identification Documents</button>
-                                </div>
-                                <div class="save-btn">
-                                    <button class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                     </div>
-        </div>
-
-        </div>
-           
-
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // Wait for DOM to load
-            document.addEventListener("DOMContentLoaded", function () {
-                const chatInput = document.getElementById("chatInput");
-                const sendButton = document.getElementById("sendButton");
-                const messageDisplay = document.getElementById("messageDisplay");
-
-                // Event Listener for Send Button
-                sendButton.addEventListener("click", function () {
-                    const message = chatInput.value.trim(); // Get input value and trim spaces
-
-                    if (message) {
-                        // Create a new message element
-                        const messageElement = document.createElement("div");
-                        messageElement.textContent = message;
-                        messageElement.style.padding = "10px";
-                        messageElement.style.marginBottom = "10px";
-                        messageElement.style.borderRadius = "10px";
-                        // messageElement.style.backgroundColor = "#000"; // Blue background
-                        messageElement.style.color = "#000"; // White text
-
-                        // Append the message element to the display area
-                        messageDisplay.appendChild(messageElement);
-
-                        // Clear the input field
-                        chatInput.value = "";
-
-                        // Scroll to the bottom of the message display
-                        messageDisplay.scrollTop = messageDisplay.scrollHeight;
-                    }
-                });
-
-                // Optionally, send message on pressing Enter
-                chatInput.addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        sendButton.click();
-                    }
-                });
-            });
-        </script>
-
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/script.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const text = "What can I help with?";
-                const typewriterElement = document.getElementById("typewriter");
-                let index = 0;
-                function typeWriter() {
-                    if (index < text.length) {
-                        typewriterElement.textContent += text.charAt(index);
-                        index++;
-                        setTimeout(typeWriter, 100); // Typing speed in milliseconds
-                    }
-                }
-
-                typeWriter(); // Start the typewriter effect
-            });
-
-            // display the message on javascript
-            document.addEventListener("DOMContentLoaded", function () {
-                const inputField = document.getElementById("chatInput");
-                const sendButton = document.getElementById("sendButton");
-                const messageDisplay = document.getElementById("messageDisplay");
-
-                // Handle message submission
-                sendButton.addEventListener("click", function () {
-                    const userMessage = inputField.value.trim(); // Get the input value and trim spaces
-
-                    if (userMessage) {
-                        // Create a new message element
-                        const messageElement = document.createElement("p");
-                        messageElement.textContent = userMessage;
-                        messageElement.style.padding = "10px";
-                        messageElement.style.borderRadius = "10px";
-                        messageElement.style.backgroundColor = "#f8f9fa";
-                        messageElement.style.color = "#000";
-                        messageElement.style.marginBottom = "10px";
-
-                        // Append the message to the display
-                        messageDisplay.appendChild(messageElement);
-
-                        // Clear the input field
-                        inputField.value = "";
-                    }
-                });
-
-                // Optionally handle the Enter key for message submission
-                inputField.addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        sendButton.click(); // Trigger button click on Enter key press
-                    }
-                });
-            });
-        </script>
-=======
-        <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex flex-column">
-            <!-- Header Section -->
-            <header class="d-flex justify-content-end p-3" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; align-items: center; background-color: white;">
-                <!-- Notification Bell Icon -->
-                <div class="notification-icon" style="position: relative; margin-right: 20px;">
-                    <img src="assets/Shape.svg" alt="Profile" style="width: 30px; height: 30px; ">
-                    <span class="badge" style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; font-size: 0.8rem; padding: 2px 5px; border-radius: 50%;">3</span>
-                </div>
-                <!-- Profile Icon -->
-                <div class="profile-icon" style="width: 30px; height: 30px; border-radius: 50%; background-color: #333333; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; font-weight: bold;">
-                    A
-                </div>
-            </header>
-        
-            <!-- Content Section -->
-            <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%; margin-top: 10%; margin-bottom: 10%;">
-                <h3 style="margin-bottom: 20px; font-family: Arial, sans-serif; font-weight: 600; color: #333333;">
-                    What can I help with?
-                </h3>
-                <div class="input-group" style="position: relative; max-width: 1000px; width: 100%; background-color: #f4f4f4; border-radius: 30px; padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <input type="text" class="form-control border-1"
-                        placeholder="Enter Patient Name To Check Status or Track Permit Status" id="chatInput"
-                        style="background-color: #f4f4f4; border: none; outline: none; font-size: 1rem; padding: 10px 15px; width: 100%; border-radius: 30px;">
-                    <!-- Added a new row container for the button -->
-                    <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
-                        <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
-                            id="sendButton" style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
+                            id="sendButton"
+                            style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
                             <!-- Add your image here -->
-                            <img src="assets/Vector.png" alt="Icon" style="width: 24px; height: 24px; position: absolute;">
+                            <img src="assets/Vector.png" alt="Icon"
+                                style="width: 24px; height: 24px; position: absolute;">
                             <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
                         </button>
                     </div>
                 </div>
-        
+
+
                 <div class="card-body">
                     <form class="mt-5 border rounded p-5">
                         <h3>Add New Request ( Health Permit )</h3>
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="patient-name" class="form-label">Patient Name</label>
-                                <input type="text" class="form-control" id="patient-name" placeholder="Add employee name">
+                                <input type="text" class="form-control" id="patient-name"
+                                    placeholder="Add employee name">
                             </div>
                             <div class="col-md-6">
                                 <label for="position" class="form-label">Position</label>
@@ -585,7 +507,7 @@
                                 <input type="email" class="form-control" id="email" placeholder="Add employee email">
                             </div>
                         </div>
-        
+
                         <h5 class="mb-3">Medical Information</h5>
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
@@ -594,7 +516,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="allergy-history" class="form-label">Allergy History</label>
-                                <input type="text" class="form-control" id="allergy-history" placeholder="Enter Allergy">
+                                <input type="text" class="form-control" id="allergy-history"
+                                    placeholder="Enter Allergy">
                             </div>
                             <div class="col-md-6">
                                 <label for="chronic-conditions" class="form-label">Chronic Conditions</label>
@@ -605,24 +528,69 @@
                                 <input type="text" class="form-control" id="doctor" placeholder="Doctor Name">
                             </div>
                         </div>
-        
+
                         <div class="d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-success">Approved</button>
                             <button type="button" class="btn btn-secondary">Cancel</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
+
+
                     </form>
                 </div>
+
             </div>
+
         </div>
-        
     </div>
 
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Wait for DOM to load
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatInput = document.getElementById("chatInput");
+            const sendButton = document.getElementById("sendButton");
+            const messageDisplay = document.getElementById("messageDisplay");
+
+            // Event Listener for Send Button
+            sendButton.addEventListener("click", function () {
+                const message = chatInput.value.trim(); // Get input value and trim spaces
+
+                if (message) {
+                    // Create a new message element
+                    const messageElement = document.createElement("div");
+                    messageElement.textContent = message;
+                    messageElement.style.padding = "10px";
+                    messageElement.style.marginBottom = "10px";
+                    messageElement.style.borderRadius = "10px";
+                    // messageElement.style.backgroundColor = "#000"; // Blue background
+                    messageElement.style.color = "#000"; // White text
+
+                    // Append the message element to the display area
+                    messageDisplay.appendChild(messageElement);
+
+                    // Clear the input field
+                    chatInput.value = "";
+
+                    // Scroll to the bottom of the message display
+                    messageDisplay.scrollTop = messageDisplay.scrollHeight;
+                }
+            });
+
+            // Optionally, send message on pressing Enter
+            chatInput.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    sendButton.click();
+                }
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
->>>>>>> fc77b740df16f7c31208342e6737ff782e9440d0
 </body>
 
 </html>
