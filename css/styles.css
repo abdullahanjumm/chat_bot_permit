@@ -1,19 +1,36 @@
-.message {
-    max-width: 75%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    word-wrap: break-word;
+/* Chat Messages Section */
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.user-message {
-    align-self: flex-end;
-    background-color: #0056b3; /* Distinct blue for user */
-    color: white;
+/* Centered Input Section */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Full height of the chat container */
+    background-color: #1e1e1e; /* Background for better contrast */
 }
 
-.bot-message {
-    align-self: flex-start;
-    background-color: #333333; /* Dark gray for bot */
+.input-group .form-control {
+    height: 50px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-text {
+    background-color: transparent;
+}
+
+.btn-primary {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
     color: white;
+    margin-bottom: 20px;
+    font-weight: 500;
 }

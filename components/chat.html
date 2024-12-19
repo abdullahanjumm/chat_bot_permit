@@ -1,26 +1,19 @@
-<div class="d-flex flex-column vh-100">
-    <!-- Header -->
-    <header class="bg-dark text-white py-2 text-center">
-        <h4>Memory Full</h4>
-    </header>
-
-    <!-- Chat Messages -->
-    <div class="flex-grow-1 overflow-auto p-3">
-        <div class="messages">
-            <div class="message user-message p-3 mb-2 bg-primary text-white rounded align-self-end">
-                Hello! How can I assist you today?
-            </div>
-            <div class="message bot-message p-3 mb-2 bg-light border rounded align-self-start">
-                I’m trying to build a responsive ChatGPT UI clone.
-            </div>
+<!-- Chat Messages -->
+<div class="flex-grow-1 overflow-auto bg-black p-4 d-flex align-items-center justify-content-center">
+    <div class="input-container d-flex flex-column align-items-center">
+        <h3 class="text-center mb-4">What can I help with?</h3>
+        <div class="input-group" style="max-width: 800px; width: 100%;">
+            <span class="input-group-text bg-transparent border-0">
+                <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
+            </span>
+            <input type="text" class="form-control border-0 shadow-sm rounded-pill" 
+                placeholder="Message ChatGPT" id="chatInput" style="background-color: #f8f9fa;">
+            <span class="input-group-text bg-transparent border-0">
+                <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center" 
+                    id="sendButton" style="width: 45px; height: 45px;">
+                    <i class="bi bi-arrow-right text-white"></i>
+                </button>
+            </span>
         </div>
     </div>
-
-    <!-- Input -->
-    <footer class="bg-light p-2">
-        <div class="d-flex">
-            <input type="text" class="form-control me-2" placeholder="Type your message...">
-            <button class="btn btn-primary">Send</button>
-        </div>
-    </footer>
 </div>
