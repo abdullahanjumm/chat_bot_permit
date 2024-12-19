@@ -1,14 +1,15 @@
 <!-- Chat Messages -->
 <div class="flex-grow-1 overflow-auto bg-black p-4 d-flex align-items-center justify-content-center">
-    <div class="input-container d-flex flex-column align-items-center">
-        <h3 class="text-center mb-4">What can I help with?</h3>
-        <div class="input-group" style="max-width: 1200px; width: 100%;">
-            <span class="input-group-text bg-transparent border-0">
+    <div class="input-container d-flex flex-column align-items-center text-center" style="max-width: 800px; width: 100%;">
+        <h3 class="mb-4">What can I help with?</h3>
+        <div class="input-group shadow-lg p-3 bg-light rounded" style="width: 100%; border-radius: 30px;">
+            <span class="input-group-text bg-transparent border-0" style="padding: 0 15px;">
                 <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
             </span>
-            <input type="text" class="form-control border-0 shadow-sm rounded-pill" 
-                placeholder="Message ChatGPT" id="chatInput" style="background-color: #f8f9fa;">
-            <span class="input-group-text bg-transparent border-0">
+            <input type="text" class="form-control border-0" 
+                placeholder="Enter Patient Name To Check Status or Track Permit Status" 
+                id="chatInput" style="background-color: #f8f9fa; border-radius: 30px;">
+            <span class="input-group-text bg-transparent border-0" style="padding: 0 15px;">
                 <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center" 
                     id="sendButton" style="width: 45px; height: 45px;">
                     <i class="bi bi-arrow-right text-white"></i>
