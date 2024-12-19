@@ -6,53 +6,18 @@
     <title>ChatGPT Clone</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-dark text-white">
     <div class="d-flex vh-100">
         <!-- Sidebar -->
-        <div class="sidebar bg-dark text-white d-flex flex-column" style="width: 300px;">
-            <div class="p-3">
-                <h4 class="text-center mb-4">ChatGPT</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white">Today</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white">Yesterday</a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white">Previous 7 Days</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">Previous 30 Days</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- <div class="mt-auto p-3">
-                <button class="btn btn-primary w-100">Upgrade Plan</button>
-            </div> -->
-        </div>
+        <div class="sidebar bg-dark text-white d-flex flex-column" style="width: 300px;" id="sidebar"></div>
 
         <!-- Chat -->
         <div class="chat flex-grow-1 d-flex flex-column">
-            <!-- Header -->
-            <!-- <header class="bg-dark text-white py-3 px-4 d-flex justify-content-between align-items-center">
-                <h5>ChatGPT</h5>
-                <h6>Memory Full</h6>
-            </header> -->
-
             <!-- Chat Messages -->
             <div class="flex-grow-1 overflow-auto bg-black p-4">
-                <div class="messages">
-                    <!-- <div class="message user-message p-3 mb-2 bg-primary text-white rounded align-self-end">
-                        Hello! How can I assist you today?
-                    </div>
-                    <div class="message bot-message p-3 mb-2 bg-light border rounded align-self-start">
-                        I’m trying to build a responsive ChatGPT UI clone.
-                    </div> -->
-                </div>
+                <div class="messages"></div>
             </div>
 
             <!-- Input -->
@@ -67,7 +32,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script src="js/script.js"></script>
 </body>
 </html>
