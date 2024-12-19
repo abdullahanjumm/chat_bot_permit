@@ -4,41 +4,48 @@
     align-items: center;
     justify-content: center;
     height: 100%; /* Ensure the height takes the full container */
-    background-color: #1e1e1e; /* Optional: Background contrast */
+    background-color: #f8f9fa; /* Light background for contrast */
 }
 
 /* Input Box Styles */
 .input-group {
     width: 100%;
-    max-width: 1200px; /* Adjusted for a larger width */
+    max-width: 800px; /* Ensure a compact width like the screenshot */
+    background-color: #ffffff; /* White background for the input box */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a sleek look */
 }
 
 .input-group .form-control {
-    height: 55px;
-    border-radius: 30px;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
+    height: 50px; /* Adjusted for a thinner input box */
+    border: none; /* Remove borders */
+    font-size: 0.95rem;
+    padding-left: 10px; /* Padding for text */
+    background-color: transparent; /* Match the white background */
+    border-radius: 15px;
 }
 
 .input-group-text {
     background-color: transparent;
+    border: none;
+    padding: 0 10px;
 }
 
 .btn-primary {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #007bff; /* Primary blue color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Elevated shadow for the button */
 }
 
 /* Heading Above Input */
 .input-container h3 {
-    color: white;
+    color: #333; /* Dark text color for visibility */
     margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
