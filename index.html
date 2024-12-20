@@ -9,13 +9,86 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1050;
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .sidebar {
+            width: 300px;
+            max-height: 100vh;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 56px;
+            /* This aligns the sidebar below the navbar */
+            left: 0;
+            z-index: 1040;
+        }
+
+        .main-content {
+            margin-left: 300px;
+            /* Matches the width of the sidebar */
+            padding-top: 70px;
+            /* Adjust to account for the navbar height */
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                top: 0;
+                width: 100%;
+                z-index: 1040;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                top: 0;
+                width: 100%;
+                z-index: 1040;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 60px;
+            }
+
+            #typewriter {
+                margin-top: 40vh !important;
+                /* Adjust this value as needed */
+            }
+        }
+
+        /* For screens larger than 768px */
+        @media (min-width: 768px) {
+            #typewriter {
+                margin-top: 40vh !important;
+                /* Adjust the value as needed */
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-white text-black">
+
     <div class="d-flex vh-100">
         <!-- Sidebar for Desktop -->
+
         <div class="d-none d-md-flex flex-column bg-light text-white p-3"
             style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
+
             <div class="text-center mb-4">
                 <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;">
             </div>
@@ -128,20 +201,16 @@
         </div>
 
         <!-- Toggle Button for Sidebar -->
-        <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
+        <!-- Toggle Button for Sidebar -->
+        <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+            aria-controls="offcanvasSidebar"
             style="width: 50px; height: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; z-index: 1050; position: relative; background-color: white;">
             <img src="assets/Vector.svg" alt="Icon" style="width: 25px; height: 25px;">
         </button>
-        <!-- <button class="btn btn-primary d-md-none m-2" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
-        style="width: 50px; height: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; z-index: 1050; position: relative; background-color: white;">
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-    </button> -->
+
+
         <!-- Offcanvas Sidebar -->
-           <div class="offcanvas offcanvas-start bg-white text-dark" tabindex="-1" id="offcanvasSidebar"
+        <div class="offcanvas offcanvas-start bg-white text-dark" tabindex="-1" id="offcanvasSidebar"
             aria-labelledby="offcanvasSidebarLabel">
             <div class="offcanvas-header">
                 <!-- <h5 class="offcanvas-title" id="offcanvasSidebarLabel">MADINAH HEALTH CARE</h5> -->
@@ -231,8 +300,9 @@
                     </ul>
                 </ul>
             </div>
-            
+
         </div>
+
         <!-- Chat -->
         <div
             class="flex-grow-1 overflow-auto bg-white p-4 d-flex align-items-center justify-content-center flex-column">
@@ -251,18 +321,16 @@
                     A
                 </div>
             </header>
-            <!-- Content Section -->
             <div class="input-container d-flex flex-column align-items-center"
-                style="max-width: 1200px; width: 100%; margin-top: 130vh; margin-bottom: 10%;">
-                <h3 style="margin-bottom: 20px; font-family: Arial, sans-serif; font-weight: 600; color: #333333;">
-                    What can I help with?
-                </h3>
+                style="max-width: 1200px; width: 100%; margintop: 20%;">
+
+                <h3 class="text-center mb-4" id="typewriter"> </h3>
                 <div id="messageDisplay"
                     style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
                     <!-- Messages will appear here dynamically -->
                 </div>
                 <div class="input-group" style="position: relative; max-width: 100%; background-color: #f4f4f4; border-radius: 30px; padding:
-                10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <span class="input-group-text bg-transparent border-0">
                         <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
                     </span>
@@ -280,8 +348,120 @@
                     </div>
                 </div>
 
+                <div class="container my-5"
+                    style="max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
 
-                <div class="card-body">
+                    <h3 class="mb-4">Add New Request (Health Permit)</h3>
+                    <form>
+                        <div class="row g-4">
+                            <!-- Basic Information -->
+                            <div class="col-md-6">
+                                <h5>Basic Information</h5>
+                                <div class="mb-3">
+                                    <label for="patient-name" class="form-label">Patient Name</label>
+                                    <input type="text" class="form-control" id="patient-name"
+                                        placeholder="Patient Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="position" class="form-label">Position</label>
+                                    <select id="position" class="form-select">
+                                        <option selected>Choose Position</option>
+                                        <option value="1">Manager</option>
+                                        <option value="2">Engineer</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="department" class="form-label">Department</label>
+                                    <select id="department" class="form-select">
+                                        <option selected>Choose Department</option>
+                                        <option value="1">HR</option>
+                                        <option value="2">IT</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date-of-joining" class="form-label">Date of Joining</label>
+                                    <input type="date" class="form-control" id="date-of-joining">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone-number" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone-number"
+                                        placeholder="000-000-0000">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="@example.com">
+                                </div>
+                            </div>
+
+                            <!-- Medical Information -->
+                            <div class="col-md-6">
+                                <h5>Medical Information</h5>
+                                <div class="mb-3">
+                                    <label for="blood-group" class="form-label">Blood Group</label>
+                                    <input type="text" class="form-control" id="blood-group"
+                                        placeholder="Enter Blood Group">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="allergy-history" class="form-label">Allergy History</label>
+                                    <input type="text" class="form-control" id="allergy-history"
+                                        placeholder="Enter Allergies">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="chronic-conditions" class="form-label">Chronic Conditions</label>
+                                    <input type="text" class="form-control" id="chronic-conditions"
+                                        placeholder="Enter Chronic Conditions">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="primary-doctor" class="form-label">Primary Doctor</label>
+                                    <input type="text" class="form-control" id="primary-doctor"
+                                        placeholder="Enter Doctor's Name">
+                                </div>
+                            </div>
+
+                            <!-- Personal Info -->
+                            <div class="col-md-6">
+                                <h5>Personal Info</h5>
+                                <div class="mb-3">
+                                    <label for="passport-no" class="form-label">Passport No.</label>
+                                    <input type="text" class="form-control" id="passport-no"
+                                        placeholder="Add Passport No.">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passport-exp-date" class="form-label">Passport Exp Date</label>
+                                    <input type="date" class="form-control" id="passport-exp-date">
+                                </div>
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="col-md-6">
+                                <h5>Documents</h5>
+                                <div class="mb-3">
+                                    <label for="identification-doc" class="form-label">Upload Identification
+                                        Documents</label>
+                                    <input type="file" class="form-control" id="identification-doc">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="medical-doc" class="form-label">Upload Medical Documents</label>
+                                    <input type="file" class="form-control" id="medical-doc">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="authorization-letter" class="form-label">Upload Authorization
+                                        Letter</label>
+                                    <input type="file" class="form-control" id="authorization-letter">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-secondary me-2">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-body"
+                    style="max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
                     <form class="mt-5 border rounded p-5">
                         <h3>Add New Request ( Health Permit )</h3>
                         <div class="row g-3 mb-3">
@@ -441,7 +621,6 @@
                     inputField.value = "";
                 }
             });
-
             // Optionally handle the Enter key for message submission
             inputField.addEventListener("keypress", function (e) {
                 if (e.key === "Enter") {
@@ -449,22 +628,22 @@
                 }
             });
         });
-    </script>
-    <script>
+
         // Function to handle sidebar close on resize
         function closeSidebarOnResize() {
             const sidebar = document.getElementById("offcanvasSidebar");
             const bootstrapOffcanvas = bootstrap.Offcanvas.getInstance(sidebar);
-    
+
             if (window.innerWidth > 768) {
                 if (bootstrapOffcanvas && bootstrapOffcanvas._isShown) {
                     bootstrapOffcanvas.hide(); // Close the sidebar
                 }
             }
         }
-    
+
         // Add event listener for window resize
         window.addEventListener("resize", closeSidebarOnResize);
+
     </script>
 </body>
 
