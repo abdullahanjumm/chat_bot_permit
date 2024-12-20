@@ -128,8 +128,8 @@
         </div>
 
         <!-- Toggle Button for Sidebar -->
-        <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
+        <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+            aria-controls="offcanvasSidebar"
             style="width: 50px; height: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; z-index: 1050; position: relative; background-color: white;">
             <img src="assets/Vector.svg" alt="Icon" style="width: 25px; height: 25px;">
         </button>
@@ -139,11 +139,11 @@
         <!-- Offcanvas Sidebar -->
         <div class="offcanvas offcanvas-start bg-white text-dark" tabindex="-1" id="offcanvasSidebar"
             aria-labelledby="offcanvasSidebarLabel">
-          
+
             <div class="offcanvas-body">
                 <!-- Sidebar Content -->
                 <div class="text-center mb-4">
-                    <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;">
+                    <h4 class="text-center text-black">MADINAH HEALTH CARE</h4>
                 </div>
                 <ul class="nav flex-column" style="font-size: 12px;">
                     <li class="nav-item mb-2" style="border: none;">
@@ -273,7 +273,7 @@
             </header>
             <!-- Content Section -->
             <div class="input-container d-flex flex-column align-items-center"
-                style="max-width: 1200px; width: 100%; margin-top: 130vh; margin-bottom: 10%;">
+                style="max-width: 1200px; width: 100%; margin-top: 70vh; margin-bottom: 10%;">
                 <h3 style="margin-bottom: 20px; font-family: Arial, sans-serif; font-weight: 600; color: #333333;">
                     What can I help with?
                 </h3>
@@ -612,6 +612,69 @@
                     sendButton.click(); // Trigger button click on Enter key press
                 }
             });
+        });
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            const messageDisplay = document.getElementById("messageDisplay");
+            const chatInputContainer = document.querySelector(".input-group");
+            const sendButton = document.getElementById("sendButton");
+            const chatInput = document.getElementById("chatInput");
+
+            // Function to check if there are any messages
+            function updateInputPosition() {
+                console.log("Children count:", messageDisplay.children.length);
+                if (messageDisplay.children.length > 0) {
+                    console.log("Positioning at the bottom");
+                    chatInputContainer.style.position = "absolute";
+                    chatInputContainer.style.bottom = "20px";
+                    chatInputContainer.style.left = "20px";
+                    chatInputContainer.style.right = "20px";
+                } else {
+                    console.log("Resetting to default position");
+                    chatInputContainer.style.position = "relative";
+                    chatInputContainer.style.bottom = "unset";
+                    chatInputContainer.style.left = "unset";
+                    chatInputContainer.style.right = "unset";
+                }
+            }
+
+
+            // Event listener for the Send button
+            sendButton.addEventListener("click", function () {
+                const message = chatInput.value.trim();
+
+                if (message) {
+                    // Add the message to the display
+                    const messageElement = document.createElement("div");
+                    messageElement.textContent = message;
+                    messageElement.style.padding = "10px";
+                    messageElement.style.marginBottom = "10px";
+                    messageElement.style.borderRadius = "10px";
+                    messageElement.style.backgroundColor = "#f8f9fa";
+                    messageElement.style.color = "#000";
+
+                    messageDisplay.appendChild(messageElement);
+
+                    // Clear the input field
+                    chatInput.value = "";
+
+                    // Scroll to the latest message
+                    messageDisplay.scrollTop = messageDisplay.scrollHeight;
+
+                    // Update the input group position
+                    updateInputPosition();
+                }
+            });
+
+            // Optionally listen for Enter key to send message
+            chatInput.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    sendButton.click();
+                }
+            });
+
+            // Check position on page load
+            updateInputPosition();
         });
     </script>
 </body>
