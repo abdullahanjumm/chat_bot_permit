@@ -663,6 +663,19 @@
             updateInputPosition();
         });
 
+
+        function closeSidebarOnResize() {
+            const sidebar = document.getElementById("offcanvasSidebar");
+            const bootstrapOffcanvas = bootstrap.Offcanvas.getInstance(sidebar);
+
+            if (window.innerWidth > 768) {
+                if (bootstrapOffcanvas && bootstrapOffcanvas._isShown) {
+                    bootstrapOffcanvas.hide(); // Close the sidebar
+                }
+            }
+        }
+        window.addEventListener("resize", closeSidebarOnResize);
+
     </script>
 
 </body>
