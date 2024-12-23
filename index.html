@@ -19,7 +19,7 @@
             border-bottom: 1px solid #ccc;
         }
 
-        #messageDisplay::before{
+        #messageDisplay::before {
             content: "Chat Response:";
         }
 
@@ -41,6 +41,13 @@
             padding-top: 70px;
             /* Adjust to account for the navbar height */
         }
+
+        #phone-number {
+            appearance: none;
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+        }
+
 
         @media (max-width: 768px) {
             .sidebar {
@@ -328,33 +335,32 @@
                 style="max-width: 1200px; width: 100%; margintop: 20%;">
 
                 <h3 class="text-center mb-4" id="typewriter"> </h3>
-           
-                <!-- ABDUL -->
-                <div id="messageDisplay"
-                style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
-                <!-- Messages will appear here dynamically -->
-            </div>
 
-            <div class="input-group" id="chatInputGroup"
-                style="position: relative; max-width: 50%; background-color: #f4f4f4; border-radius: 30px; padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                <span class="input-group-text bg-transparent border-0">
-                    <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
-                </span>
-                <input type="text" class="form-control border-1" placeholder="Enter your message" id="chatInput"
-                    style="background-color: #f4f4f4; border: none; outline: none; font-size: 1rem; padding: 10px 15px; width: 100%; border-radius: 30px;">
-                <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
-                    <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
-                        id="sendButton"
-                        style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
-                        <img src="assets/Vector.png" alt="Icon"
-                            style="width: 24px; height: 24px; position: absolute;">
-                        <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
-                    </button>
+
+                <div id="messageDisplay"
+                    style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
+                    <!-- Messages will appear here dynamically -->
                 </div>
-            </div>
+
+                <div class="input-group" id="chatInputGroup"
+                    style="position: relative; max-width: 50%; background-color: #f4f4f4; border-radius: 30px; padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <span class="input-group-text bg-transparent border-0">
+                        <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
+                    </span>
+                    <input type="text" class="form-control border-1" placeholder="Enter your message" id="chatInput"
+                        style="background-color: #f4f4f4; border: none; outline: none; font-size: 1rem; padding: 10px 15px; width: 100%; border-radius: 30px;">
+                    <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
+                        <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
+                            id="sendButton"
+                            style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
+                            <img src="assets/Vector.png" alt="Icon"
+                                style="width: 24px; height: 24px; position: absolute;">
+                            <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="container my-5"
                     style="max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-
                     <h3 class="mb-4">Add New Request (Health Permit)</h3>
                     <form>
                         <div class="row g-4">
@@ -386,34 +392,40 @@
                                     <label for="date-of-joining" class="form-label">Date of Joining</label>
                                     <input type="date" class="form-control" id="date-of-joining">
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="phone-number" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone-number"
-                                        placeholder="000-000-0000">
-                                </div>
+                                    <input type="number" class="form-control" id="phone-number"
+                                        placeholder="Enter your Number">
+                                </div> -->
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="@example.com">
-                                </div>
+                                    <label for="phone-number" class="form-label">Additional Details</label>
+                                    <textarea class="form-control" id="phone-number" placeholder="Enter any further clarification or details here" style="appearance: none; -moz-appearance: textfield; -webkit-appearance: none;" rows="3"></textarea>
+                                </div>                                
                             </div>
 
                             <!-- Medical Information -->
                             <div class="col-md-6">
                                 <h5>Medical Information</h5>
                                 <div class="mb-3">
-                                    <label for="blood-group" class="form-label">Blood Group</label>
+                                    <label for="blood-group" class="form-label">Martial Status</label>
                                     <input type="text" class="form-control" id="blood-group"
-                                        placeholder="Enter Blood Group">
+                                        placeholder="Enter Martial Status">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="allergy-history" class="form-label">Allergy History</label>
-                                    <input type="text" class="form-control" id="allergy-history"
-                                        placeholder="Enter Allergies">
+                                    <label for="phone-number" class="form-label">Phone Number: (Active your Whatsapp Number)</label>
+                                    <input type="number" class="form-control" id="phone-number"
+                                        placeholder="Enter your Number"
+                                        style="appearance: none; -moz-appearance: textfield; -webkit-appearance: none;"
+                                        min="0">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="chronic-conditions" class="form-label">Chronic Conditions</label>
-                                    <input type="text" class="form-control" id="chronic-conditions"
-                                        placeholder="Enter Chronic Conditions">
+                                    <label for="chronic-conditions" class="form-label">Urgent Need:</label>
+                                    <select id="department" class="form-select">
+                                        <option selected>Select your option</option>
+                                        <option value="1">Normal</option>
+                                        <option value="2">High</option>
+                                        <option value="3">Emergency</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="primary-doctor" class="form-label">Primary Doctor</label>
@@ -426,12 +438,14 @@
                             <div class="col-md-6">
                                 <h5>Personal Info</h5>
                                 <div class="mb-3">
-                                    <label for="passport-no" class="form-label">Passport No.</label>
-                                    <input type="text" class="form-control" id="passport-no"
-                                        placeholder="Add Passport No.">
+                                    <label for="passport-no" class="form-label">Passport Number</label>
+                                    <input type="number" class="form-control" id="phone-number"
+                                    placeholder="Enter your Number"
+                                    style="appearance: none; -moz-appearance: textfield; -webkit-appearance: none;"
+                                    min="0">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="passport-exp-date" class="form-label">Passport Exp Date</label>
+                                    <label for="passport-exp-date" class="form-label">Passport Expiry Date</label>
                                     <input type="date" class="form-control" id="passport-exp-date">
                                 </div>
                             </div>
@@ -584,7 +598,7 @@
     </script> -->
 
 
-   <script>
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             const text = "What can I help with?";
             const typewriterElement = document.getElementById("typewriter");
@@ -676,8 +690,16 @@
         }
         window.addEventListener("resize", closeSidebarOnResize);
 
-    </script>
 
+
+        //phone number did not input the negative value
+        document.getElementById('phone-number').addEventListener('input', function (e) {
+            if (this.value < 0) {
+                this.value = 0; // Reset to 0 if a negative value is entered
+            }
+        });
+    </script>
+  
 </body>
 
 </html>
