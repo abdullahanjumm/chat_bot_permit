@@ -373,21 +373,16 @@
                                         placeholder="Patient Name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="position" class="form-label">Position</label>
-                                    <select id="position" class="form-select">
-                                        <option selected>Choose Position</option>
-                                        <option value="1">Manager</option>
-                                        <option value="2">Engineer</option>
-                                    </select>
+                                    <label for="primary-doctor" class="form-label">Hospital Name </label>
+                                    <input type="text" class="form-control" id="primary-doctor"
+                                        placeholder="Enter your Hospital Name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="department" class="form-label">Department</label>
-                                    <select id="department" class="form-select">
-                                        <option selected>Choose Department</option>
-                                        <option value="1">HR</option>
-                                        <option value="2">IT</option>
-                                    </select>
-                                </div>
+                                    <label for="preferred-language" class="form-label">Preferred Language:</label>
+                                    <input type="text" class="form-control" id="preferred-language"
+                                        placeholder="Which language would you like to communicate in?">
+                                </div>  
+                               
                                 <div class="mb-3">
                                     <label for="date-of-joining" class="form-label">Date of Joining</label>
                                     <input type="date" class="form-control" id="date-of-joining">
@@ -396,6 +391,11 @@
                                     <label for="phone-number" class="form-label">Phone Number</label>
                                     <input type="number" class="form-control" id="phone-number"
                                         placeholder="Enter your Number">
+                                </div> -->
+                                <!-- <div class="mb-3">
+                                    <label for="primary-doctor" class="form-label">Hospital Name </label>
+                                    <input type="text" class="form-control" id="primary-doctor"
+                                        placeholder="Enter your Hospital Name">
                                 </div> -->
                                 <div class="mb-3">
                                     <label for="phone-number" class="form-label">Additional Details</label>
@@ -428,10 +428,15 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="primary-doctor" class="form-label">Primary Doctor</label>
+                                    <label for="primary-doctor" class="form-label">Doctor Name</label>
                                     <input type="text" class="form-control" id="primary-doctor"
-                                        placeholder="Enter Doctor's Name">
+                                        placeholder="Enter your Doctor Name">
                                 </div>
+                                <!-- <div class="mb-3">
+                                    <label for="preferred-language" class="form-label">Preferred Language:</label>
+                                    <input type="text" class="form-control" id="preferred-language"
+                                        placeholder="Which language would you like to communicate in?">
+                                </div>                                 -->
                             </div>
 
                             <!-- Personal Info -->
@@ -440,7 +445,7 @@
                                 <div class="mb-3">
                                     <label for="passport-no" class="form-label">Passport Number</label>
                                     <input type="number" class="form-control" id="phone-number"
-                                    placeholder="Enter your Number"
+                                    placeholder="Enter your Passport Number"
                                     style="appearance: none; -moz-appearance: textfield; -webkit-appearance: none;"
                                     min="0">
                                 </div>
