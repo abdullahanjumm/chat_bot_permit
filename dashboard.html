@@ -99,11 +99,10 @@
         <div class="d-none d-md-flex flex-column bg-light text-white p-3"
             style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
 
-            <div class="text-center mb-4">
-                <h2 class="text-center text-black" style="margin-top: 20px; margin-bottom: 20px;">Dashboad</h2>
-
-                <!-- <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;"> -->
-            </div>
+            <h2 id="dashboard-title" class="text-center text-black"
+                style="margin-top: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;">
+                Dashboard
+            </h2>
             <ul class="nav flex-column" id="data-list" style="font-size: 12px;">
                 <!-- Dynamic content will be inserted here -->
             </ul>
@@ -258,7 +257,7 @@
                     </div>
                 </div> -->
                 <div class="container my-5"
-                    style="height: 300px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                    style="height: 75vh; overflow-y: auto; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
                     <!-- <h3 class="mb-4">Add New Request (Health Permit)</h3> -->
 
                 </div>
@@ -465,6 +464,7 @@
                 return [];
             }
         }
+
         // Function to display user details in the div
         function showUserDetails(user) {
             const container = document.querySelector('.container.my-5');
@@ -476,18 +476,19 @@
 
             // Clear existing content in the container
             container.innerHTML = `
-        <h3>User Details</h3>
-       <div>
-            <p><strong>Reference Number:</strong> ${user.reference_number}</p>
-            <p><strong>Status:</strong> ${user.status}</p>
-            <p><strong>Patient Name:</strong> ${user.patient_name}</p>
-            <p><strong>Passport Number:</strong> ${user.passport_no}</p>
-            <p><strong>Passport Expiry Date:</strong> ${user.passport_exp_date}</p>
-            <p><strong>Phone Number:</strong> ${user.phone_number}</p>
-            <p><strong>Primary Doctor Name:</strong> ${user.primary_doctor}</p>
-            <p><strong>E-mail Address:</strong> ${user.email_address}</p> 
-            <p><strong>Other Details:</strong> ${user.other_details || 'N/A'}</p>
-        </div>`;
+            <h3>User Details</h3>
+            <div>
+                <p><strong>Reference Number:</strong> ${user.reference_number}</p>
+                <p><strong>Status:</strong> ${user.status}</p>
+                <p><strong>Patient Name:</strong> ${user.patient_name}</p>
+                <p><strong>Passport Number:</strong> ${user.passport_no}</p>
+                <p><strong>Passport Expiry Date:</strong> ${user.passport_exp_date}</p>
+                <p><strong>Phone Number:</strong> ${user.phone_number}</p>
+                <p><strong>Primary Doctor Name:</strong> ${user.primary_doctor}</p>
+                <p><strong>E-mail Address:</strong> ${user.email_address}</p>
+                <p><strong>Other Details:</strong> ${user.other_details || 'N/A'}</p>
+            </div>`;
+
             // Create buttons for Approve, Reject, and Pending
             const approveButton = document.createElement('button');
             approveButton.className = 'btn btn-success btn-sm';
@@ -526,6 +527,7 @@
             // Append the button container below the details section
             container.appendChild(buttonContainer);
         }
+
         // Function to handle approve action
         async function approveUser(user) {
             try {
@@ -649,7 +651,6 @@
             };
         }
 
-
         // Function to handle pending action
         async function markAsPending(user) {
             try {
@@ -675,6 +676,39 @@
             }
         }
 
+
+        // Function to display the table when no user is selected
+        function showTable(users) {
+            const container = document.querySelector('.container.my-5');
+            if (!container) {
+                console.error('Container element not found.');
+                return;
+            }
+
+
+            // Clear existing content in the container
+            container.innerHTML = `
+        <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #333;">Users List</h3>
+        <table class="table table-striped table-bordered table-hover" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <thead style="background-color: #007438; color: white;">
+                <tr>
+                    <th style="padding: 12px; font-weight: bold;">Reference Number</th>
+                    <th style="padding: 12px; font-weight: bold;">Patient Name</th>
+                    <th style="padding: 12px; font-weight: bold;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${users.map(user => `
+                    <tr>
+                        <td style="padding: 12px; color: #333;">${user.reference_number}</td>
+                        <td style="padding: 12px; color: #333;">${user.patient_name}</td>
+                        <td style="padding: 12px; color: #333;">${user.status}</td>
+                    </tr>`).join('')}
+            </tbody>
+        </table>
+    `;
+        }
+
         // Function to create a list item for each user
         function createListItem(user) {
             // Create the list item element
@@ -684,6 +718,16 @@
             listItem.style.backgroundColor = 'transparent';
             listItem.style.marginBottom = '20px';
             listItem.style.color = 'black';
+            listItem.style.cursor = 'pointer';  // Make the cursor a pointer
+
+            // Add hover effect using inline styles for background change
+            listItem.addEventListener('mouseenter', () => {
+                listItem.style.backgroundColor = '#f0f0f0';  // Change background on hover
+            });
+
+            listItem.addEventListener('mouseleave', () => {
+                listItem.style.backgroundColor = 'transparent';  // Reset the background color when the mouse leaves
+            });
 
             // Create the span for user information
             const userInfo = document.createElement('span');
@@ -710,7 +754,23 @@
         }
 
 
-        // Function to render the data into the DOM without categorization
+        document.getElementById('dashboard-title').addEventListener('click', () => {
+            const container = document.querySelector('.container.my-5');
+            if (!container) {
+                console.error('Container element not found.');
+                return;
+            }
+
+            // Clear the content in the container to remove the selected user details
+            container.innerHTML = '';
+
+            // Fetch and show the table again
+            renderData();  // Ensure renderData fetches and displays the table
+        });
+
+
+
+        // Function to render the data into the DOM
         async function renderData() {
             const dataList = document.getElementById('data-list');
             if (!dataList) {
@@ -722,17 +782,19 @@
 
             // Clear existing content
             dataList.innerHTML = '';
-
             // Create and append list items for each user
             users.forEach(user => {
                 const listItem = createListItem(user);
                 dataList.appendChild(listItem);
             });
+            // If no user is selected, show the table
+            showTable(users);
         }
 
         // Call the renderData function when the page loads
         document.addEventListener('DOMContentLoaded', renderData);
     </script>
+
 
     <!-- api for sidebar all users -->
 
