@@ -562,6 +562,7 @@
             modal.style.position = 'fixed';
             modal.style.top = '0';
             modal.style.left = '0';
+            modal.style.zIndex = '2000';
             modal.style.width = '100%';
             modal.style.height = '100%';
             modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
@@ -584,7 +585,7 @@
             closeModal.style.right = '20px';
             closeModal.style.fontSize = '30px';
             closeModal.style.cursor = 'pointer';
-            closeModal.style.color = 'black';
+            closeModal.style.color = 'white';
             modalContent.appendChild(closeModal);
 
             // Create the textarea for rejection reason
