@@ -545,6 +545,8 @@
                 if (response.ok) {
                     console.log('User approved:', data);
                     alert('User status updated to approved!');
+                    location.reload();
+
                 } else {
                     console.error('Error approving user:', data);
                 }
@@ -638,6 +640,8 @@
                     if (response.ok) {
                         console.log('User rejected:', data);
                         alert('User status updated to rejected!');
+                        location.reload();
+
                     } else {
                         console.error('Error rejecting user:', data);
                     }
@@ -668,6 +672,8 @@
                 if (response.ok) {
                     console.log('User status set to pending:', data);
                     alert('User status updated to pending!');
+                    location.reload();
+
                 } else {
                     console.error('Error marking user as pending:', data);
                 }
@@ -768,6 +774,7 @@
             renderData();  // Ensure renderData fetches and displays the table
         });
 
+    
 
 
         // Function to render the data into the DOM
