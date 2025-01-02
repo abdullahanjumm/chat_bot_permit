@@ -97,7 +97,7 @@
         <!-- Sidebar for Desktop -->
 
         <div class="d-none d-md-flex flex-column bg-light text-white p-3"
-            style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
+            style="width: 250px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
 
             <h2 id="dashboard-title" class="text-center text-black"
                 style="margin-top: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;">
@@ -632,7 +632,7 @@
                         },
                         body: JSON.stringify({
                             status: 'rejected',  // Sending the status in the body
-                            reason: rejectionReason,  // Sending the rejection reason
+                            rejectionReason: rejectionReason,  // Sending the rejection reason
                         }),
                     });
 
@@ -742,8 +742,8 @@
             // Create the badge element
             const badge = document.createElement('span');
             badge.className = `badge rounded-circle ${user.status === 'rejected' ? 'bg-danger' : user.status === 'pending' ? 'bg-warning' : 'bg-success'}`;
-            badge.style.width = '20px';
-            badge.style.height = '20px';
+            badge.style.width = '10px';
+            badge.style.height = '10px';
             badge.innerHTML = '&nbsp;'; // Add a non-breaking space to ensure the badge is visible
 
             // Append the userInfo and badge to the list item
