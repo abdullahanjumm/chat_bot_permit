@@ -476,7 +476,7 @@
             return null;
         }
 
-       // Function to display user details in the div
+        // Function to display user details in the div
         function showUserDetails(user) {
             const container = document.querySelector('.container.my-5');
 
@@ -488,9 +488,9 @@
             const authorizationLetter = cleanFileUrl(user.authorization_letter);
             const identificationDoc = cleanFileUrl(user.identification_doc);
             const medicalDoc = cleanFileUrl(user.medical_doc);
-          
-               // Bootstrap card for a modern layout
-    container.innerHTML = `
+
+            // Bootstrap card for a modern layout
+            container.innerHTML = `
         <div class="card shadow-sm">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-0">User Details</h3>
@@ -524,20 +524,30 @@
                     </div>
                 </div>
                 <hr>
-                <div>
-                    <p><strong>Authorization Letter:</strong> ${authorizationLetter
-                        ? `<a href="${authorizationLetter}" class="text-primary" target="_blank">View Document</a>`
-                        : '<span class="text-muted">Missing</span>'
-                    }</p>
-                    <p><strong>Identification Document:</strong> ${identificationDoc
-                        ? `<a href="${identificationDoc}" class="text-primary" target="_blank">View Document</a>`
-                        : '<span class="text-muted">Missing</span>'
-                    }</p>
-                    <p><strong>Medical Document:</strong> ${medicalDoc
-                        ? `<a href="${medicalDoc}" class="text-primary" target="_blank">View Document</a>`
-                        : '<span class="text-muted">Missing</span>'
-                    }</p>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p><strong>Authorization Letter:</strong></p>
+                    ${authorizationLetter
+                    ? `<a href="${authorizationLetter}" class="btn btn-outline-primary btn-sm w-100" target="_blank">View Document</a>`
+                    : '<span class="text-muted">Missing</span>'
+                }
                 </div>
+                <div class="col-md-4">
+                    <p><strong>Identification Document:</strong></p>
+                    ${identificationDoc
+                    ? `<a href="${identificationDoc}" class="btn btn-outline-primary btn-sm w-100" target="_blank">View Document</a>`
+                    : '<span class="text-muted">Missing</span>'
+                }
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Medical Document:</strong></p>
+                    ${medicalDoc
+                    ? `<a href="${medicalDoc}" class="btn btn-outline-primary btn-sm w-100" target="_blank">View Document</a>`
+                    : '<span class="text-muted">Missing</span>'
+                }
+                </div>
+            </div>
+
             </div>
            
         </div>`;
