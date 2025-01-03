@@ -229,7 +229,8 @@
                     A
                 </div>
             </header>
-            <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%;margin-top: 5%; ">
+            <div class="input-container d-flex flex-column align-items-center"
+                style="max-width: 1200px; width: 100%;margin-top: 5%; ">
 
                 <h3 class="text-center mb-4" id="typewriter"> </h3>
 
@@ -465,7 +466,17 @@
             }
         }
 
-        // Function to display user details in the div
+
+        function cleanFileUrl(rawUrl) {
+            // Use regex to extract the URL part only
+            const urlMatch = rawUrl?.match(/https?:\/\/[^\s]+/);
+            if (urlMatch) {
+                return encodeURI(urlMatch[0]); // Encode the URL properly
+            }
+            return null;
+        }
+
+       // Function to display user details in the div
         function showUserDetails(user) {
             const container = document.querySelector('.container.my-5');
 
@@ -473,21 +484,64 @@
                 console.error('Container element not found.');
                 return;
             }
+            // Clean up the URLs
+            const authorizationLetter = cleanFileUrl(user.authorization_letter);
+            const identificationDoc = cleanFileUrl(user.identification_doc);
+            const medicalDoc = cleanFileUrl(user.medical_doc);
+          
+               // Bootstrap card for a modern layout
+    container.innerHTML = `
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">User Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Reference Number:</strong> ${user.reference_number}</p>
+                        <p><strong>Status:</strong> ${user.status}</p>
+                        <p><strong>Patient Name:</strong> ${user.patient_name}</p>
+                        <p><strong>Passport Number:</strong> ${user.passport_no}</p>
+                        <p><strong>Phone Number:</strong> ${user.phone_number}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Primary Doctor Name:</strong> ${user.primary_doctor || 'N/A'}</p>
+                        <p><strong>E-mail Address:</strong> ${user.email_address}</p>
+                        <p><strong>Other Details:</strong> ${user.other_details || 'N/A'}</p>
+                        <p><strong>Reject Reason:</strong> ${user.rejectReason || 'N/A'}</p>
+                        <p><strong>Country:</strong> ${user.country}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Hospital:</strong> ${user.hospital || 'N/A'}</p>
+                        <p><strong>Visa Assistant:</strong> ${user.visaAssistant}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Created At:</strong> ${user.created_at}</p>
+                        <p><strong>Updated At:</strong> ${user.updated_at}</p>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <p><strong>Authorization Letter:</strong> ${authorizationLetter
+                        ? `<a href="${authorizationLetter}" class="text-primary" target="_blank">View Document</a>`
+                        : '<span class="text-muted">Missing</span>'
+                    }</p>
+                    <p><strong>Identification Document:</strong> ${identificationDoc
+                        ? `<a href="${identificationDoc}" class="text-primary" target="_blank">View Document</a>`
+                        : '<span class="text-muted">Missing</span>'
+                    }</p>
+                    <p><strong>Medical Document:</strong> ${medicalDoc
+                        ? `<a href="${medicalDoc}" class="text-primary" target="_blank">View Document</a>`
+                        : '<span class="text-muted">Missing</span>'
+                    }</p>
+                </div>
+            </div>
+           
+        </div>`;
 
-            // Clear existing content in the container
-            container.innerHTML = `
-            <h3>User Details</h3>
-            <div>
-                <p><strong>Reference Number:</strong> ${user.reference_number}</p>
-                <p><strong>Status:</strong> ${user.status}</p>
-                <p><strong>Patient Name:</strong> ${user.patient_name}</p>
-                <p><strong>Passport Number:</strong> ${user.passport_no}</p>
-
-                <p><strong>Phone Number:</strong> ${user.phone_number}</p>
-                <p><strong>Primary Doctor Name:</strong> ${user.primary_doctor}</p>
-                <p><strong>E-mail Address:</strong> ${user.email_address}</p>
-                <p><strong>Other Details:</strong> ${user.other_details || 'N/A'}</p>
-            </div>`;
 
             // Create buttons for Approve, Reject, and Pending
             const approveButton = document.createElement('button');
@@ -775,7 +829,7 @@
             renderData();  // Ensure renderData fetches and displays the table
         });
 
-    
+
 
 
         // Function to render the data into the DOM
