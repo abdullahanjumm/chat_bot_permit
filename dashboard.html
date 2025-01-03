@@ -237,9 +237,9 @@
                 style="max-width: 1200px; width: 100%; ">
 
                 <h3 class="text-center mb-4" id="typewriter"> </h3>
+            
 
-
-                <div id="messageDisplay"
+                <!-- <div id="messageDisplay"
                     style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
 
                 </div>
@@ -260,7 +260,7 @@
                             <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
                 <div class="container my-5"
                     style="display: flex; flex-direction: column; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
                   
@@ -490,8 +490,8 @@
             }
 
                 // Hide the chat section when user details are shown
-            document.getElementById('messageDisplay').style.display = 'none';
-            document.getElementById('chatInputGroup').style.display = 'none';
+            // document.getElementById('messageDisplay').style.display = 'none';
+            // document.getElementById('chatInputGroup').style.display = 'none';
 
 
             // Clean up the URLs
@@ -854,8 +854,8 @@
             container.innerHTML = '';
 
                 // Show the chat section again
-            document.getElementById('messageDisplay').style.display = 'block';
-            document.getElementById('chatInputGroup').style.display = 'block';
+            // document.getElementById('messageDisplay').style.display = 'block';
+            // document.getElementById('chatInputGroup').style.display = 'block';
 
             // Fetch and show the table again
             renderData();  // Ensure renderData fetches and displays the table
@@ -908,7 +908,8 @@
         // Call the renderData function when the page loads
         document.addEventListener('DOMContentLoaded', renderData);
     </script>
-
+   <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+   <script src="https://files.bpcontent.cloud/2025/01/03/10/20250103101601-7Y7YW069.js"></script>
 
     <!-- api for sidebar all users -->
 
