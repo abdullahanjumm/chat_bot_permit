@@ -216,7 +216,7 @@
 
         <!-- Chat -->
         <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex align-items-center justify-content-center flex-column min-vh-100"
-        style="margin-left: 250px;">
+            style="margin-left: 250px;">
 
             <!-- Header Section -->
             <header class="d-flex justify-content-end p-3"
@@ -233,11 +233,10 @@
                     A
                 </div>
             </header>
-            <div class="input-container d-flex flex-column align-items-center"
-                style="max-width: 1200px; width: 100%; ">
+            <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%; ">
 
                 <h3 class="text-center mb-4" id="typewriter"> </h3>
-            
+
 
                 <!-- <div id="messageDisplay"
                     style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
@@ -263,9 +262,26 @@
                 </div> -->
                 <div class="container my-5"
                     style="display: flex; flex-direction: column; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
-                  
+
                 </div>
 
+            </div>
+            <div id="stickyText" style="
+            position: fixed; 
+            bottom: 25px; 
+            right: 100px; 
+            background-color: #892e1c; 
+            color: #ffffff; 
+            padding: 15px 20px; 
+            border-radius: 30px; 
+            font-family: Arial, sans-serif; 
+            font-size: 16px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;">
+                <span>To add a new request, click on the chat icon </span>
+                <i class="bi bi-arrow-right-circle" style="font-size: 1.5rem;"></i>
             </div>
 
         </div>
@@ -489,7 +505,7 @@
                 return;
             }
 
-                // Hide the chat section when user details are shown
+            // Hide the chat section when user details are shown
             // document.getElementById('messageDisplay').style.display = 'none';
             // document.getElementById('chatInputGroup').style.display = 'none';
 
@@ -538,19 +554,19 @@
           <div class="col-md-6">
               <p><strong>Authorization Letter:</strong></p>
               ${authorizationLetter
-                  ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
                          ${getFilePreview(authorizationLetter)}
                      </div>`
-                  : '<span class="text-muted">Missing</span>'}
+                    : '<span class="text-muted">Missing</span>'}
               <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>View Document</a>
           </div>
           <div class="col-md-6">
               <p><strong>Authorization Letter:</strong></p>
               ${medicalDoc
-                  ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
                          ${getFilePreview(medicalDoc)}
                      </div>`
-                  : '<span class="text-muted">Missing</span>'}
+                    : '<span class="text-muted">Missing</span>'}
               <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>View Document</a>
           </div>   
         </div>`;
@@ -853,7 +869,7 @@
             // Clear the content in the container to remove the selected user details
             container.innerHTML = '';
 
-                // Show the chat section again
+            // Show the chat section again
             // document.getElementById('messageDisplay').style.display = 'block';
             // document.getElementById('chatInputGroup').style.display = 'block';
 
@@ -908,8 +924,8 @@
         // Call the renderData function when the page loads
         document.addEventListener('DOMContentLoaded', renderData);
     </script>
-   <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-   <script src="https://files.bpcontent.cloud/2025/01/03/10/20250103101601-7Y7YW069.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/01/03/10/20250103101601-7Y7YW069.js"></script>
 
     <!-- api for sidebar all users -->
 
