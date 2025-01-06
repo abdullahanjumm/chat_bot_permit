@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatGPT Clone</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -513,7 +514,7 @@
 
             // Clean up the URLs
             const authorizationLetter = cleanFileUrl(user.authorization_letter);
-            const identificationDoc = cleanFileUrl(user.identification_doc);
+
             const medicalDoc = cleanFileUrl(user.medical_doc);
 
             // Bootstrap card for a modern layout
@@ -559,7 +560,7 @@
                          ${getFilePreview(authorizationLetter)}
                      </div>`
                     : '<span class="text-muted">Missing</span>'}
-              <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>View Document</a>
+              <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
           </div>
           <div class="col-md-6">
               <p><strong>Authorization Letter:</strong></p>
@@ -568,24 +569,42 @@
                          ${getFilePreview(medicalDoc)}
                      </div>`
                     : '<span class="text-muted">Missing</span>'}
-              <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>View Document</a>
+              <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
           </div>   
         </div>`;
 
+            // function getFilePreview(fileUrl) {
+            //     // Extract file extension
+            //     const fileExtension = fileUrl.split('.').pop().toLowerCase();
+
+            //     // Generate appropriate preview based on file type
+            //     if (['png', 'jpeg', 'jpg'].includes(fileExtension)) {
+            //         return `<img src="${fileUrl}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
+            //     } else if (fileExtension === 'pdf') {
+            //         // Remove toolbar by adding #toolbar=0
+            //         return `<iframe src="${fileUrl}#toolbar=0" style="width: 100%; height: 100%; border: none;"></iframe>`;
+            //     } else {
+            //         return '<span class="text-muted">Unsupported file type</span>';
+            //     }
+            // }
             function getFilePreview(fileUrl) {
                 // Extract file extension
                 const fileExtension = fileUrl.split('.').pop().toLowerCase();
 
-                // Generate appropriate preview based on file type
-                if (['png', 'jpeg', 'jpg'].includes(fileExtension)) {
+                // Check if the file is NOT a PDF
+                if (fileExtension !== 'pdf') {
+                    // Render non-PDF files in an iframe
                     return `<img src="${fileUrl}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
-                } else if (fileExtension === 'pdf') {
-                    // Remove toolbar by adding #toolbar=0
-                    return `<iframe src="${fileUrl}#toolbar=0" style="width: 100%; height: 100%; border: none;"></iframe>`;
                 } else {
-                    return '<span class="text-muted">Unsupported file type</span>';
+                    // For PDF files, just show the file type
+                    return `
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                            <img src="https://icon-library.com/images/doc-icon/doc-icon-4.jpg" alt="Image Preview" style="width: 80%; height: 80%; object-fit: contain;">
+                        </div>`;
+
                 }
             }
+
 
 
             // Create buttons for Approve, Reject, and Pending
