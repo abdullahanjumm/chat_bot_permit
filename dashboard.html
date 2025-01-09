@@ -529,7 +529,7 @@
                         <p><strong>Reference Number:</strong> ${user.reference_number}</p>
                         <p><strong>Status:</strong> ${user.status}</p>
                         <p><strong>Patient Name:</strong> ${user.patient_name}</p>
-                        <p><strong>Passport Number:</strong> ${user.passport_no}</p>
+                        <p><strong>ID Number:</strong> ${user.passport_no}</p>
                         <p><strong>Phone Number:</strong> ${user.phone_number}</p>
                     </div>
                     <div class="col-md-6">
@@ -573,20 +573,7 @@
           </div>   
         </div>`;
 
-            // function getFilePreview(fileUrl) {
-            //     // Extract file extension
-            //     const fileExtension = fileUrl.split('.').pop().toLowerCase();
-
-            //     // Generate appropriate preview based on file type
-            //     if (['png', 'jpeg', 'jpg'].includes(fileExtension)) {
-            //         return `<img src="${fileUrl}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
-            //     } else if (fileExtension === 'pdf') {
-            //         // Remove toolbar by adding #toolbar=0
-            //         return `<iframe src="${fileUrl}#toolbar=0" style="width: 100%; height: 100%; border: none;"></iframe>`;
-            //     } else {
-            //         return '<span class="text-muted">Unsupported file type</span>';
-            //     }
-            // }
+       
             function getFilePreview(fileUrl) {
                 // Extract file extension
                 const fileExtension = fileUrl.split('.').pop().toLowerCase();
@@ -856,7 +843,8 @@
 
             // Create the span for user information
             const userInfo = document.createElement('span');
-            userInfo.textContent = `${user.reference_number} - ${user.patient_name}`;
+            userInfo.textContent = `${user.reference_number} - ${(user.patient_name && user.patient_name.trim()) ? user.patient_name : user.passport_no}`;
+
 
             // Create the badge element
             const badge = document.createElement('span');
