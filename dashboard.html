@@ -516,64 +516,123 @@
             const authorizationLetter = cleanFileUrl(user.authorization_letter);
 
             const medicalDoc = cleanFileUrl(user.medical_doc);
-
+            // Initial container HTML
+            let isEditable = false; // Track edit state
             // Bootstrap card for a modern layout
             container.innerHTML = `
-        <div class="card shadow-sm">
-            <div class="card-header bg-success text-white">
-                <h3 class="mb-0">User Details</h3>
-            </div>
-            <div class="card-body">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">Edit User Details</h3>
+        </div>
+        <div class="card-body">
+            <form id="userDetailsForm">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Reference Number:</strong> ${user.reference_number}</p>
-                        <p><strong>Status:</strong> ${user.status}</p>
-                        <p><strong>Patient Name:</strong> ${user.patient_name}</p>
-                        <p><strong>ID Number:</strong> ${user.passport_no}</p>
-                        <p><strong>Phone Number:</strong> ${user.phone_number}</p>
+                        <div class="mb-3">
+                            <label for="referenceNumber" class="form-label"><strong>Reference Number:</strong></label>
+                            <input type="text" class="form-control" id="referenceNumber" name="referenceNumber" value="${user.reference_number}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label"><strong>Status:</strong></label>
+                            <input type="text" class="form-control" id="status" name="status" value="${user.status}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label"><strong>Patient Name:</strong></label>
+                            <input type="text" class="form-control" id="patientName" name="patientName" value="${user.patient_name || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passportNo" class="form-label"><strong>ID Number:</strong></label>
+                            <input type="text" class="form-control" id="passportNo" name="passportNo" value="${user.passport_no}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label"><strong>Phone Number:</strong></label>
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="${user.phone_number || 'N/A'}">
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Primary Doctor Name:</strong> ${user.primary_doctor || 'N/A'}</p>
-                        <p><strong>E-mail Address:</strong> ${user.email_address}</p>
-                        <p><strong>Other Details:</strong> ${user.other_details || 'N/A'}</p>
-                        <p><strong>Reject Reason:</strong> ${user.rejectReason || 'N/A'}</p>
-                        <p><strong>Country:</strong> ${user.country}</p>
+                        <div class="mb-3">
+                            <label for="primaryDoctor" class="form-label"><strong>Primary Doctor Name:</strong></label>
+                            <input type="text" class="form-control" id="primaryDoctor" name="primaryDoctor" value="${user.primary_doctor || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label"><strong>E-mail Address:</strong></label>
+                            <input type="email" class="form-control" id="emailAddress" name="emailAddress" value="${user.email_address || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="otherDetails" class="form-label"><strong>Other Details:</strong></label>
+                            <textarea class="form-control" id="otherDetails" name="otherDetails" rows="3">${user.other_details || ''}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rejectReason" class="form-label"><strong>Reject Reason:</strong></label>
+                            <textarea class="form-control" id="rejectReason" name="rejectReason" rows="3">${user.rejectReason || ''}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label"><strong>Country:</strong></label>
+                            <input type="text" class="form-control" id="country" name="country" value="${user.country || 'N/A'}">
+                        </div>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Hospital:</strong> ${user.hospital || 'N/A'}</p>
-                        <p><strong>Visa Assistant:</strong> ${user.visaAssistant}</p>
+                        <div class="mb-3">
+                            <label for="hospital" class="form-label"><strong>Hospital:</strong></label>
+                            <input type="text" class="form-control" id="hospital" name="hospital" value="${user.hospital || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="visaAssistant" class="form-label"><strong>Visa Assistant:</strong></label>
+                            <input type="text" class="form-control" id="visaAssistant" name="visaAssistant" value="${user.visaAssistant || 'N/A'}">
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Created At:</strong> ${user.created_at}</p>
-                        <p><strong>Updated At:</strong> ${user.updated_at}</p>
+                        <div class="mb-3">
+                            <label for="createdAt" class="form-label"><strong>Created At:</strong></label>
+                            <input type="text" class="form-control" id="createdAt" name="createdAt" value="${user.created_at}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updatedAt" class="form-label"><strong>Updated At:</strong></label>
+                            <input type="text" class="form-control" id="updatedAt" name="updatedAt" value="${user.updated_at}" readonly>
+                        </div>
                     </div>
                 </div>
                 <hr>
-          <div class="row mt-3">
-          <div class="col-md-6">
-              <p><strong>Authorization Letter:</strong></p>
-              ${authorizationLetter
-                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                         ${getFilePreview(authorizationLetter)}
-                     </div>`
-                    : '<span class="text-muted">Missing</span>'}
-              <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
-          </div>
-          <div class="col-md-6">
-              <p><strong>Authorization Letter:</strong></p>
-              ${medicalDoc
-                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                         ${getFilePreview(medicalDoc)}
-                     </div>`
-                    : '<span class="text-muted">Missing</span>'}
-              <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
-          </div>   
-        </div>`;
+                
 
-       
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Save Changes</button>
+                    <button type="button" class="btn btn-secondary ms-2">Cancel</button>
+                </div>
+         
+            </form>
+                <div class="d-flex justify-content-between">
+                  <div class="col-md-6 me-3">
+                      <p><strong>Authorization Letter:</strong></p>
+                      ${authorizationLetter
+                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                               ${getFilePreview(authorizationLetter)}
+                           </div>`
+                    : '<span class="text-muted">Missing</span>'}
+                      <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
+                  </div>
+                  <div class="col-md-6">
+                      <p><strong>Medical Document:</strong></p>
+                      ${medicalDoc
+                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                               ${getFilePreview(medicalDoc)}
+                           </div>`
+                    : '<span class="text-muted">Missing</span>'}
+                      <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!medicalDoc ? 'disabled' : ''}>Download Document</a>
+                  </div>
+                </div>
+
+                
+        </div>
+    </div>
+`;
+
+
+
             function getFilePreview(fileUrl) {
                 // Extract file extension
                 const fileExtension = fileUrl.split('.').pop().toLowerCase();
@@ -591,6 +650,54 @@
 
                 }
             }
+
+            document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+                const updatedData = Object.fromEntries(formData.entries());
+
+                // Transform the data to match API requirements
+                const transformedData = {
+                    patient_name: updatedData.patientName,
+                    phone_number: updatedData.phoneNumber,
+                    email_address: updatedData.emailAddress,
+                    country: updatedData.country,
+                    passport_no: updatedData.passportNo,
+                    hospital: updatedData.hospital,
+                    // medical_doc: updatedData.medical_doc || null, // Handle medical document (if available)
+                    // authorization_letter: updatedData.authorization_letter || null, // Handle authorization letter (if available)
+                    visaAssistant: updatedData.visaAssistant,
+                };
+
+                console.log('Transformed Data:', transformedData);
+
+                // API call
+                try {
+                    const response = await fetch(`https://medical-permits.vercel.app/updateData/${user.passport_no}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // 'Authorization': 'Bearer YOUR_API_TOKEN', // Replace with your API token
+                        },
+                        body: JSON.stringify(transformedData),
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('API Response:', result);
+                        alert('Data updated successfully!');
+                        window.location.reload();
+                    } else {
+                        console.error('API Error:', response.status, response.statusText);
+                        alert('Failed to update data. Please try again.');
+                        window.location.reload();
+                    }
+                } catch (error) {
+                    console.error('Network Error:', error);
+                    alert('An error occurred while updating the data.');
+                }
+            });
 
 
 
