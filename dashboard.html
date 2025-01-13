@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Clone</title>
+    <title>MOD bot</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
         rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -534,7 +534,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="status" class="form-label"><strong>Status:</strong></label>
-                            <input type="text" class="form-control" id="status" name="status" value="${user.status}">
+                            <input type="text" class="form-control" id="status" name="status" value="${user.status}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="patientName" class="form-label"><strong>Patient Name:</strong></label>
@@ -558,10 +558,7 @@
                             <label for="emailAddress" class="form-label"><strong>E-mail Address:</strong></label>
                             <input type="email" class="form-control" id="emailAddress" name="emailAddress" value="${user.email_address || 'N/A'}">
                         </div>
-                        <div class="mb-3">
-                            <label for="otherDetails" class="form-label"><strong>Other Details:</strong></label>
-                            <textarea class="form-control" id="otherDetails" name="otherDetails" rows="3">${user.other_details || ''}</textarea>
-                        </div>
+                      
                         <div class="mb-3">
                             <label for="rejectReason" class="form-label"><strong>Reject Reason:</strong></label>
                             <textarea class="form-control" id="rejectReason" name="rejectReason" rows="3">${user.rejectReason || ''}</textarea>
@@ -599,39 +596,61 @@
                 
 
 
-                <div class="d-flex justify-content-end">
+
+                <div class="d-flex justify-content-between">
+                    <div class="col-md-6 me-3">
+                        <p><strong>Authorization Letter:</strong></p>
+                        ${authorizationLetter
+                          ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                                 ${getFilePreview(authorizationLetter)}
+                             </div>`
+                          : '<span class="text-muted">Missing</span>'}
+                        <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2">Upload Document</button>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Medical Document:</strong></p>
+                        ${medicalDoc
+                          ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                                 ${getFilePreview(medicalDoc)}
+                             </div>`
+                          : '<span class="text-muted">Missing</span>'}
+                        <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!medicalDoc ? 'disabled' : ''}>Download Document</a>
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2">Upload Document</button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-success">Save Changes</button>
                     <button type="button" class="btn btn-secondary ms-2">Cancel</button>
                 </div>
+
          
             </form>
-                <div class="d-flex justify-content-between">
-                  <div class="col-md-6 me-3">
-                      <p><strong>Authorization Letter:</strong></p>
-                      ${authorizationLetter
-                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                               ${getFilePreview(authorizationLetter)}
-                           </div>`
-                    : '<span class="text-muted">Missing</span>'}
-                      <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
-                  </div>
-                  <div class="col-md-6">
-                      <p><strong>Medical Document:</strong></p>
-                      ${medicalDoc
-                    ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                               ${getFilePreview(medicalDoc)}
-                           </div>`
-                    : '<span class="text-muted">Missing</span>'}
-                      <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!medicalDoc ? 'disabled' : ''}>Download Document</a>
-                  </div>
-                </div>
 
                 
         </div>
     </div>
 `;
 
+            // Add the event listeners after injecting the HTML
+            const form = document.getElementById('userDetailsForm');
 
+            if (form) {
+                const saveButton = form.querySelector('button[type="submit"]');
+
+                // Initially disable the Save button
+                saveButton.disabled = true;
+
+                // Add event listeners to all form inputs to detect changes
+                form.addEventListener('input', () => {
+                    saveButton.disabled = false;
+                });
+
+                form.addEventListener('change', () => {
+                    saveButton.disabled = false;
+                });
+            }
 
             function getFilePreview(fileUrl) {
                 // Extract file extension
@@ -665,7 +684,8 @@
                     country: updatedData.country,
                     passport_no: updatedData.passportNo,
                     hospital: updatedData.hospital,
-                    // medical_doc: updatedData.medical_doc || null, // Handle medical document (if available)
+
+                    // medical_dokc: updatedData.medical_doc || null, // Handle medical document (if available)
                     // authorization_letter: updatedData.authorization_letter || null, // Handle authorization letter (if available)
                     visaAssistant: updatedData.visaAssistant,
                 };
