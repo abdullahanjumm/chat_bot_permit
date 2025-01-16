@@ -100,7 +100,8 @@
 
         <div class="d-none d-md-flex flex-column bg-light text-white p-3  max-vh-100"
             style="width: 250px;  overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050;  position: fixed; top: 0; left: 0; height: 100vh;">
-            <img src="assets/logo.png" alt="Logo" class="img-fluid mb-3" style="max-width: 80%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
+            <img src="assets/logo.png" alt="Logo" class="img-fluid mb-3"
+                style="max-width: 80%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
             <h2 id="dashboard-title" class="text-center text-black"
                 style="margin-top: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;">
                 Dashboard
@@ -513,9 +514,9 @@
 
 
             // Clean up the URLs
-            const authorizationLetter = cleanFileUrl(user.authorization_letter);
+            let authorizationLetter = cleanFileUrl(user.authorization_letter);
 
-            const medicalDoc = cleanFileUrl(user.medical_doc);
+            let medicalDoc = cleanFileUrl(user.medical_doc);
             // Initial container HTML
             let isEditable = false; // Track edit state
             // Bootstrap card for a modern layout
@@ -596,32 +597,29 @@
                 
 
 
-
                 <div class="d-flex justify-content-between">
                     <div class="col-md-6 me-3">
                         <p><strong>Authorization Letter:</strong></p>
-                        ${authorizationLetter
-                          ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                                 ${getFilePreview(authorizationLetter)}
-                             </div>`
-                          : '<span class="text-muted">Missing</span>'}
-                        <a href="${authorizationLetter || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!authorizationLetter ? 'disabled' : ''}>Download Document</a>
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2">Upload Document</button>
+                        <div class="file-preview" id="authPreview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                            <span class="text-muted" id="authPlaceholder">Missing</span>
+                        </div>
+                        <a href="#" id="authDownload" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" disabled>Download Document</a>
+                        <input type="file" id="authUpload" accept=".pdf,.doc,.docx,.pdf,.png,.jpeg,.jpg,.gif" style="display: none;">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="document.getElementById('authUpload').click()">Upload Document</button>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Medical Document:</strong></p>
-                        ${medicalDoc
-                          ? `<div class="file-preview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
-                                 ${getFilePreview(medicalDoc)}
-                             </div>`
-                          : '<span class="text-muted">Missing</span>'}
-                        <a href="${medicalDoc || '#'}" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" ${!medicalDoc ? 'disabled' : ''}>Download Document</a>
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2">Upload Document</button>
+                        <div class="file-preview" id="medicalPreview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                            <span class="text-muted" id="medicalPlaceholder">Missing</span>
+                        </div>
+                        <a href="#" id="medicalDownload" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" disabled>Download Document</a>
+                        <input type="file" id="medicalUpload" accept=".pdf,.doc,.docx,.pdf,.png,.jpeg,.jpg,.gif" style="display: none;">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="document.getElementById('medicalUpload').click()">Upload Document</button>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-success">Save Changes</button>
+                    <button type="submit" class="btn btn-success" onclick="saveChanges()">Save Changes</button>
                     <button type="button" class="btn btn-secondary ms-2">Cancel</button>
                 </div>
 
@@ -633,7 +631,6 @@
     </div>
 `;
 
-            // Add the event listeners after injecting the HTML
             const form = document.getElementById('userDetailsForm');
 
             if (form) {
@@ -651,29 +648,51 @@
                     saveButton.disabled = false;
                 });
             }
+            function getFilePreview(file) {
+                try {
+                    // Check if file is valid
+                    if (!file || typeof file !== 'string') {
+                        console.warn('Invalid or empty file:', file);
+                        return ''; // Return an empty string to show nothing
+                    }
 
-            function getFilePreview(fileUrl) {
-                // Extract file extension
-                const fileExtension = fileUrl.split('.').pop().toLowerCase();
+                    // Extract file extension
+                    const fileExtension = file.split('.').pop().toLowerCase();
 
-                // Check if the file is NOT a PDF
-                if (fileExtension !== 'pdf') {
-                    // Render non-PDF files in an iframe
-                    return `<img src="${fileUrl}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
-                } else {
-                    // For PDF files, just show the file type
-                    return `
-                        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                            <img src="https://icon-library.com/images/doc-icon/doc-icon-4.jpg" alt="Image Preview" style="width: 80%; height: 80%; object-fit: contain;">
-                        </div>`;
-
+                    // Check if the file is NOT a PDF
+                    if (fileExtension !== 'pdf') {
+                        // Render non-PDF files as an image
+                        return `<img src="${file}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
+                    } else {
+                        // Render PDF files with a placeholder icon
+                        return `
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <img src="https://icon-library.com/images/doc-icon/doc-icon-4.jpg" alt="PDF Icon" style="width: 80%; height: 80%; object-fit: contain;">
+                </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error in getFilePreview:', error);
+                    return ''; // Return an empty string to show nothing
                 }
             }
+
+
 
             document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
 
                 const formData = new FormData(e.target);
+                // Add file inputs manually to the transformed data
+                if (authorizationLetter) {
+                    console.log('yes authorizationLetter',)
+                    formData.append('authorization_letter', authorizationLetter);
+                }
+                if (medicalDoc) {
+                    console.log('yes medicalDoc',)
+                    formData.append('medical_doc', medicalDoc);
+                }
+
+
                 const updatedData = Object.fromEntries(formData.entries());
 
                 // Transform the data to match API requirements
@@ -684,13 +703,13 @@
                     country: updatedData.country,
                     passport_no: updatedData.passportNo,
                     hospital: updatedData.hospital,
-
-                    // medical_dokc: updatedData.medical_doc || null, // Handle medical document (if available)
-                    // authorization_letter: updatedData.authorization_letter || null, // Handle authorization letter (if available)
+                    medical_doc: medicalDoc ? medicalDoc : null, // Handle medical document (if available)
+                    authorization_letter: authorizationLetter ? authorizationLetter : null, // Handle authorization letter (if available)
                     visaAssistant: updatedData.visaAssistant,
                 };
 
                 console.log('Transformed Data:', transformedData);
+                // console.log('Transformed Data:', authorizationLetter);
 
                 // API call
                 try {
@@ -718,7 +737,50 @@
                     alert('An error occurred while updating the data.');
                 }
             });
+            // Add event listeners for file uploads
+            document.getElementById('authUpload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    authorizationLetter = file;
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById('authPlaceholder').style.display = 'none';
 
+                    // Handle file preview based on type
+                    if (file.type.startsWith('image/')) {
+                        document.getElementById('authPreview').innerHTML = `<img src="${fileURL}" alt="Preview" style="width: 100%; height: 100%; object-fit: contain;" />`;
+                    } else if (file.type === 'application/pdf') {
+                        document.getElementById('authPreview').innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 100%;"></iframe>`;
+                    } else {
+                        document.getElementById('authPreview').innerHTML = `<p>Preview not available for this file type.</p>`;
+                    }
+
+                    document.getElementById('authDownload').href = fileURL;
+                    document.getElementById('authDownload').download = file.name;
+                    document.getElementById('authDownload').disabled = false;
+                }
+            });
+
+            document.getElementById('medicalUpload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    medicalDoc = file;
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById('medicalPlaceholder').style.display = 'none';
+
+                    // Handle file preview based on type
+                    if (file.type.startsWith('image/')) {
+                        document.getElementById('medicalPreview').innerHTML = `<img src="${fileURL}" alt="Preview" style="width: 100%; height: 100%; object-fit: contain;" />`;
+                    } else if (file.type === 'application/pdf') {
+                        document.getElementById('medicalPreview').innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 100%;"></iframe>`;
+                    } else {
+                        document.getElementById('medicalPreview').innerHTML = `<p>Preview not available for this file type.</p>`;
+                    }
+
+                    document.getElementById('medicalDownload').href = fileURL;
+                    document.getElementById('medicalDownload').download = file.name;
+                    document.getElementById('medicalDownload').disabled = false;
+                }
+            });
 
 
             // Create buttons for Approve, Reject, and Pending
