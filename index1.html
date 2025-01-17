@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOH bot</title>
+    <title>MOh bot</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -17,6 +19,10 @@
             z-index: 1050;
             background-color: white;
             border-bottom: 1px solid #ccc;
+        }
+
+        #messageDisplay::before {
+            content: "Chat Response:";
         }
 
         .sidebar {
@@ -38,6 +44,13 @@
             /* Adjust to account for the navbar height */
         }
 
+        #phone-number {
+            appearance: none;
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+        }
+
+
         @media (max-width: 768px) {
             .sidebar {
                 position: static;
@@ -67,14 +80,13 @@
 
             #typewriter {
                 margin-top: 40vh !important;
-                /* Adjust this value as needed */
             }
         }
 
         /* For screens larger than 768px */
         @media (min-width: 768px) {
             #typewriter {
-                margin-top: 40vh !important;
+                margin-top: 10vh !important;
                 /* Adjust the value as needed */
             }
         }
@@ -83,124 +95,26 @@
 
 <body class="bg-white text-black">
 
-    <div class="d-flex vh-100">
+    <div class="d-flex  ">
         <!-- Sidebar for Desktop -->
 
-        <div class="d-none d-md-flex flex-column bg-light text-white p-3"
-            style="width: 300px; max-height: 100vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050; position: relative;">
+        <div class="d-none d-md-flex flex-column bg-light text-white p-3  max-vh-100"
+            style="width: 250px;  overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; z-index: 1050;  position: fixed; top: 0; left: 0; height: 100vh;">
+            <img src="assets/logo.png" alt="Logo" class="img-fluid mb-3"
+                style="max-width: 80%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
+            <h2 id="dashboard-title" class="text-center text-black"
+                style="margin-top: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;">
+                Dashboard
+            </h2>
+            <!-- Search Bar -->
+            <input type="text" id="search-bar" class="form-control mb-3" placeholder="Search by Reference or Name"
+                style="font-size: 14px;" />
 
-            <div class="text-center mb-4">
-                <img src="assets/download-_38_ 1.png" alt="Logo" style="max-width: 100%; height: auto;">
-            </div>
-            <ul class="nav flex-column" style="font-size: 12px;">
-                <li class="nav-item mb-2" style="border: none;">
-                    <a href="#" class="nav-link text-dark fw-bold">Today</a>
-                </li>
-                <ul class="list-group" style="padding-left: 0; list-style-type: none;">
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12345 - Ali Khan
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12346 - Sara Ahmad
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12347 - Faisal Kareem
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                </ul>
-                <li class="nav-item mb-2" style="border: none;">
-                    <a href="#" class="nav-link text-dark fw-bold">Yesterday</a>
-                </li>
-                <ul class="list-group" style="padding-left: 0; list-style-type: none;">
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12345 - Ali Khan
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12346 - Sara Ahmad
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12347 - Faisal Kareem
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                </ul>
-                <li class="nav-item mb-2" style="border: none;">
-                    <a href="#" class="nav-link text-dark fw-bold">Previous 7 Days</a>
-                </li>
-                <ul class="list-group" style="padding-left: 0; list-style-type: none;">
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12345 - Ali Khan
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12346 - Sara Ahmad
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12347 - Faisal Kareem
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                </ul>
-                <li class="nav-item" style="border: none;">
-                    <a href="#" class="nav-link text-dark fw-bold">Previous 30 Days</a>
-                </li>
-                <ul class="list-group" style="padding-left: 0; list-style-type: none;">
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12345 - Ali Khan
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12346 - Sara Ahmad
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12347 - Faisal Kareem
-                        <span class="badge bg-danger rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12346 - Sara Ahmad
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"
-                        style="border: none; background-color: transparent;">
-                        REF12347 - Faisal Kareem
-                        <span class="badge bg-success rounded-circle"
-                            style="width: 20px; height: 20px; border: 2px solid white;"> </span>
-                    </li>
-                </ul>
+            <ul class="nav flex-column" id="data-list" style="font-size: 12px;">
+                <!-- Dynamic content will be inserted here -->
             </ul>
         </div>
 
-        <!-- Toggle Button for Sidebar -->
         <!-- Toggle Button for Sidebar -->
         <button class="btn  d-md-none m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
             aria-controls="offcanvasSidebar"
@@ -304,11 +218,12 @@
         </div>
 
         <!-- Chat -->
-        <div
-            class="flex-grow-1 overflow-auto bg-white p-4 d-flex align-items-center justify-content-center flex-column">
+        <div class="flex-grow-1 overflow-auto bg-white p-4 d-flex align-items-center justify-content-center flex-column min-vh-100"
+            style="margin-left: 250px;">
+
             <!-- Header Section -->
             <header class="d-flex justify-content-end p-3"
-                style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; align-items: center; background-color: white;">
+                style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; align-items: center; background-color: transparent;">
                 <!-- Notification Bell Icon -->
                 <div class="notification-icon" style="position: relative; margin-right: 20px;">
                     <img src="assets/Shape.svg" alt="Profile" style="width: 30px; height: 30px; ">
@@ -321,16 +236,18 @@
                     A
                 </div>
             </header>
-            <div class="input-container d-flex flex-column align-items-center"
-                style="max-width: 1200px; width: 100%; margintop: 20%;">
+            <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%; ">
 
                 <h3 class="text-center mb-4" id="typewriter"> </h3>
-                <div id="messageDisplay"
+
+
+                <!-- <div id="messageDisplay"
                     style="width: 100%; margin-bottom: 20px; max-height: 300px; overflow-y: auto; padding: 10px; background-color: #fff; border-radius: 10px;">
-                    <!-- Messages will appear here dynamically -->
+
                 </div>
-                <div class="input-group" style="position: relative; max-width: 100%; background-color: #f4f4f4; border-radius: 30px; padding:
-                        10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+
+                <div class="input-group" id="chatInputGroup"
+                    style="position: relative; max-width: 50%; background-color: #f4f4f4; border-radius: 30px; padding: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <span class="input-group-text bg-transparent border-0">
                         <i class="bi bi-paperclip text-primary" style="font-size: 1.5rem;"></i>
                     </span>
@@ -340,192 +257,34 @@
                         <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
                             id="sendButton"
                             style="width: 50px; height: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); position: relative;">
-                            <!-- Add your image here -->
                             <img src="assets/Vector.png" alt="Icon"
                                 style="width: 24px; height: 24px; position: absolute;">
                             <i class="bi bi-arrow-right text-white" style="font-size: 1.5rem; position: absolute;"></i>
                         </button>
                     </div>
-                </div>
-
+                </div> -->
                 <div class="container my-5"
-                    style="max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                    style="display: flex; flex-direction: column; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
 
-                    <h3 class="mb-4">Add New Request (Health Permit)</h3>
-                    <form>
-                        <div class="row g-4">
-                            <!-- Basic Information -->
-                            <div class="col-md-6">
-                                <h5>Basic Information</h5>
-                                <div class="mb-3">
-                                    <label for="patient-name" class="form-label">Patient Name</label>
-                                    <input type="text" class="form-control" id="patient-name"
-                                        placeholder="Patient Name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="position" class="form-label">Position</label>
-                                    <select id="position" class="form-select">
-                                        <option selected>Choose Position</option>
-                                        <option value="1">Manager</option>
-                                        <option value="2">Engineer</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="department" class="form-label">Department</label>
-                                    <select id="department" class="form-select">
-                                        <option selected>Choose Department</option>
-                                        <option value="1">HR</option>
-                                        <option value="2">IT</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="date-of-joining" class="form-label">Date of Joining</label>
-                                    <input type="date" class="form-control" id="date-of-joining">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone-number" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone-number"
-                                        placeholder="000-000-0000">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="@example.com">
-                                </div>
-                            </div>
-
-                            <!-- Medical Information -->
-                            <div class="col-md-6">
-                                <h5>Medical Information</h5>
-                                <div class="mb-3">
-                                    <label for="blood-group" class="form-label">Blood Group</label>
-                                    <input type="text" class="form-control" id="blood-group"
-                                        placeholder="Enter Blood Group">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="allergy-history" class="form-label">Allergy History</label>
-                                    <input type="text" class="form-control" id="allergy-history"
-                                        placeholder="Enter Allergies">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="chronic-conditions" class="form-label">Chronic Conditions</label>
-                                    <input type="text" class="form-control" id="chronic-conditions"
-                                        placeholder="Enter Chronic Conditions">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="primary-doctor" class="form-label">Primary Doctor</label>
-                                    <input type="text" class="form-control" id="primary-doctor"
-                                        placeholder="Enter Doctor's Name">
-                                </div>
-                            </div>
-
-                            <!-- Personal Info -->
-                            <div class="col-md-6">
-                                <h5>Personal Info</h5>
-                                <div class="mb-3">
-                                    <label for="passport-no" class="form-label">Passport No.</label>
-                                    <input type="text" class="form-control" id="passport-no"
-                                        placeholder="Add Passport No.">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="passport-exp-date" class="form-label">Passport Exp Date</label>
-                                    <input type="date" class="form-control" id="passport-exp-date">
-                                </div>
-                            </div>
-
-                            <!-- Documents -->
-                            <div class="col-md-6">
-                                <h5>Documents</h5>
-                                <div class="mb-3">
-                                    <label for="identification-doc" class="form-label">Upload Identification
-                                        Documents</label>
-                                    <input type="file" class="form-control" id="identification-doc">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="medical-doc" class="form-label">Upload Medical Documents</label>
-                                    <input type="file" class="form-control" id="medical-doc">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="authorization-letter" class="form-label">Upload Authorization
-                                        Letter</label>
-                                    <input type="file" class="form-control" id="authorization-letter">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="d-flex justify-content-end mt-4">
-                            <button type="button" class="btn btn-secondary me-2">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
                 </div>
 
-                <div class="card-body"
-                    style="max-height: 400px; overflow-y: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-                    <form class="mt-5 border rounded p-5">
-                        <h3>Add New Request ( Health Permit )</h3>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label for="patient-name" class="form-label">Patient Name</label>
-                                <input type="text" class="form-control" id="patient-name"
-                                    placeholder="Add employee name">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="position" class="form-label">Position</label>
-                                <select id="position" class="form-select">
-                                    <option selected="">Senior Business Man</option>
-                                    <option>Manager</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="department" class="form-label">Department</label>
-                                <input type="text" class="form-control" id="department" placeholder="Choose department">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="date-of-joining" class="form-label">Date of Joining</label>
-                                <input type="date" class="form-control" id="date-of-joining">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Only numbers">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Add employee email">
-                            </div>
-                        </div>
-
-                        <h5 class="mb-3">Medical Information</h5>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label for="blood-group" class="form-label">Blood Group</label>
-                                <input type="text" class="form-control" id="blood-group" placeholder="Blood Group">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="allergy-history" class="form-label">Allergy History</label>
-                                <input type="text" class="form-control" id="allergy-history"
-                                    placeholder="Enter Allergy">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="chronic-conditions" class="form-label">Chronic Conditions</label>
-                                <input type="text" class="form-control" id="chronic-conditions" placeholder="PAN No">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="doctor" class="form-label">Primary Doctor</label>
-                                <input type="text" class="form-control" id="doctor" placeholder="Doctor Name">
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end gap-2">
-                            <button type="button" class="btn btn-success">Approved</button>
-                            <button type="button" class="btn btn-secondary">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-
-
-                    </form>
-                </div>
-
+            </div>
+            <div id="stickyText" style="
+            position: fixed; 
+            bottom: 25px; 
+            right: 100px; 
+            background-color: #892e1c; 
+            color: #ffffff; 
+            padding: 15px 20px; 
+            border-radius: 30px; 
+            font-family: Arial, sans-serif; 
+            font-size: 16px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;">
+                <span>To add a new request, click here </span>
+                <i class="bi bi-arrow-right-circle" style="font-size: 1.5rem;"></i>
             </div>
 
         </div>
@@ -535,34 +294,64 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Wait for DOM to load
         document.addEventListener("DOMContentLoaded", function () {
             const chatInput = document.getElementById("chatInput");
             const sendButton = document.getElementById("sendButton");
             const messageDisplay = document.getElementById("messageDisplay");
+            const apiKey = 'gg'; // Replace with your OpenAI API key
+
+            // Function to send message to ChatGPT API
+            async function sendMessageToChatGPT(message) {
+                try {
+                    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-3.5-turbo", // or your desired model
+                            messages: [{ role: "user", content: message }]
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        return data.choices[0].message.content;
+                    } else {
+                        console.error("Error:", data);
+                        return "Sorry, I couldn't process your request.";
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    return "An error occurred while connecting to the server.";
+                }
+            }
+
+            // Function to append a message to the display
+            function appendMessage(content, isUser = true) {
+                const messageElement = document.createElement("div");
+                messageElement.textContent = content;
+                messageElement.style.padding = "10px";
+                messageElement.style.marginBottom = "10px";
+                messageElement.style.borderRadius = "10px";
+                messageElement.style.color = isUser ? "#fff" : "#000";
+                messageElement.style.backgroundColor = isUser ? "#007BFF" : "#F1F1F1";
+                messageElement.style.alignSelf = isUser ? "flex-end" : "flex-start";
+                messageDisplay.appendChild(messageElement);
+                messageDisplay.scrollTop = messageDisplay.scrollHeight;
+            }
 
             // Event Listener for Send Button
-            sendButton.addEventListener("click", function () {
-                const message = chatInput.value.trim(); // Get input value and trim spaces
+            sendButton.addEventListener("click", async function () {
+                const userMessage = chatInput.value.trim();
 
-                if (message) {
-                    // Create a new message element
-                    const messageElement = document.createElement("div");
-                    messageElement.textContent = message;
-                    messageElement.style.padding = "10px";
-                    messageElement.style.marginBottom = "10px";
-                    messageElement.style.borderRadius = "10px";
-                    // messageElement.style.backgroundColor = "#000"; // Blue background
-                    messageElement.style.color = "#000"; // White text
-
-                    // Append the message element to the display area
-                    messageDisplay.appendChild(messageElement);
-
-                    // Clear the input field
+                if (userMessage) {
+                    appendMessage(userMessage, true); // Add user's message to the display
                     chatInput.value = "";
 
-                    // Scroll to the bottom of the message display
-                    messageDisplay.scrollTop = messageDisplay.scrollHeight;
+                    const chatGPTResponse = await sendMessageToChatGPT(userMessage); // Get response from ChatGPT
+                    appendMessage(chatGPTResponse, false); // Add ChatGPT's response to the display
                 }
             });
 
@@ -573,11 +362,13 @@
                 }
             });
         });
+
     </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const text = "What can I help with?";
@@ -594,11 +385,28 @@
             typeWriter(); // Start the typewriter effect
         });
 
-        // display the message on javascript
         document.addEventListener("DOMContentLoaded", function () {
             const inputField = document.getElementById("chatInput");
             const sendButton = document.getElementById("sendButton");
             const messageDisplay = document.getElementById("messageDisplay");
+            const chatInputGroup = document.getElementById("chatInputGroup");
+
+            // Function to update the position and width of the input group
+            function updateInputPosition() {
+                if (messageDisplay.childElementCount > 0) {
+                    chatInputGroup.style.position = "absolute";
+                    chatInputGroup.style.bottom = "20px";
+                    chatInputGroup.style.left = "60%";
+                    chatInputGroup.style.transform = "translateX(-50%)";
+                    chatInputGroup.style.maxWidth = "50%"; // Set width to 50% when at the bottom
+                } else {
+                    chatInputGroup.style.position = "relative";
+                    chatInputGroup.style.bottom = "unset";
+                    chatInputGroup.style.left = "unset";
+                    chatInputGroup.style.transform = "unset";
+                    chatInputGroup.style.maxWidth = "100%"; // Reset width to full when not at the bottom
+                }
+            }
 
             // Handle message submission
             sendButton.addEventListener("click", function () {
@@ -617,19 +425,30 @@
                     // Append the message to the display
                     messageDisplay.appendChild(messageElement);
 
+                    // Update input position
+                    updateInputPosition();
+
                     // Clear the input field
                     inputField.value = "";
                 }
             });
+
             // Optionally handle the Enter key for message submission
             inputField.addEventListener("keypress", function (e) {
                 if (e.key === "Enter") {
                     sendButton.click(); // Trigger button click on Enter key press
                 }
             });
+
+            // Monitor changes in the message display container
+            const observer = new MutationObserver(updateInputPosition);
+            observer.observe(messageDisplay, { childList: true });
+
+            // Initial check to set the correct position
+            updateInputPosition();
         });
 
-        // Function to handle sidebar close on resize
+
         function closeSidebarOnResize() {
             const sidebar = document.getElementById("offcanvasSidebar");
             const bootstrapOffcanvas = bootstrap.Offcanvas.getInstance(sidebar);
@@ -640,11 +459,667 @@
                 }
             }
         }
-
-        // Add event listener for window resize
         window.addEventListener("resize", closeSidebarOnResize);
 
+
+
+        //phone number did not input the negative value
+        document.getElementById('phone-number').addEventListener('input', function (e) {
+            if (this.value < 0) {
+                this.value = 0; // Reset to 0 if a negative value is entered
+            }
+        });
     </script>
+
+    <!-- api for sidebar all users -->
+    <script>
+        // Function to fetch data from the API
+        async function fetchData() {
+            try {
+                const response = await fetch('https://medical-permits.vercel.app/getAllUsersData');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Fetched data:', data);
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return [];
+            }
+        }
+
+
+        function cleanFileUrl(rawUrl) {
+            // Use regex to extract the URL part only
+            const urlMatch = rawUrl?.match(/https?:\/\/[^\s]+/);
+            if (urlMatch) {
+                return encodeURI(urlMatch[0]); // Encode the URL properly
+            }
+            return null;
+        }
+
+        // Function to display user details in the div
+        function showUserDetails(user) {
+            const container = document.querySelector('.container.my-5');
+
+            if (!container) {
+                console.error('Container element not found.');
+                return;
+            }
+
+            // Hide the chat section when user details are shown
+            // document.getElementById('messageDisplay').style.display = 'none';
+            // document.getElementById('chatInputGroup').style.display = 'none';
+
+
+            // Clean up the URLs
+            let authorizationLetter = cleanFileUrl(user.authorization_letter);
+            let medicalDoc = cleanFileUrl(user.medical_doc);
+            console.log('this is link',authorizationLetter,'dsdds', medicalDoc);
+            // Initial container HTML
+            let isEditable = false; // Track edit state
+            // Bootstrap card for a modern layout
+            container.innerHTML = `
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">Edit User Details</h3>
+        </div>
+        <div class="card-body">
+            <form id="userDetailsForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="referenceNumber" class="form-label"><strong>Reference Number:</strong></label>
+                            <input type="text" class="form-control" id="referenceNumber" name="referenceNumber" value="${user.reference_number}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label"><strong>Status:</strong></label>
+                            <input type="text" class="form-control" id="status" name="status" value="${user.status}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label"><strong>Patient Name:</strong></label>
+                            <input type="text" class="form-control" id="patientName" name="patientName" value="${user.patient_name || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passportNo" class="form-label"><strong>ID Number:</strong></label>
+                            <input type="text" class="form-control" id="passportNo" name="passportNo" value="${user.passport_no}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label"><strong>Phone Number:</strong></label>
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="${user.phone_number || 'N/A'}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="primaryDoctor" class="form-label"><strong>Primary Doctor Name:</strong></label>
+                            <input type="text" class="form-control" id="primaryDoctor" name="primaryDoctor" value="${user.primary_doctor || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label"><strong>E-mail Address:</strong></label>
+                            <input type="email" class="form-control" id="emailAddress" name="emailAddress" value="${user.email_address || 'N/A'}">
+                        </div>
+                      
+                        <div class="mb-3">
+                            <label for="rejectReason" class="form-label"><strong>Reject Reason:</strong></label>
+                            <textarea class="form-control" id="rejectReason" name="rejectReason" rows="3">${user.rejectReason || ''}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label"><strong>Country:</strong></label>
+                            <input type="text" class="form-control" id="country" name="country" value="${user.country || 'N/A'}">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="hospital" class="form-label"><strong>Hospital:</strong></label>
+                            <input type="text" class="form-control" id="hospital" name="hospital" value="${user.hospital || 'N/A'}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="visaAssistant" class="form-label"><strong>Visa Assistant:</strong></label>
+                            <input type="text" class="form-control" id="visaAssistant" name="visaAssistant" value="${user.visaAssistant || 'N/A'}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="createdAt" class="form-label"><strong>Created At:</strong></label>
+                            <input type="text" class="form-control" id="createdAt" name="createdAt" value="${user.created_at}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updatedAt" class="form-label"><strong>Updated At:</strong></label>
+                            <input type="text" class="form-control" id="updatedAt" name="updatedAt" value="${user.updated_at}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+
+
+                <div class="d-flex justify-content-between">
+                    <div class="col-md-6 me-3">
+                        <p><strong>Authorization Letter:</strong></p>
+                        <div class="file-preview" id="authPreview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                            <span class="text-muted" id="authPlaceholder">Missing</span>
+                        </div>
+                        <a href="#" id="authDownload" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" disabled>Download Document</a>
+                        <input type="file" id="authUpload" accept=".pdf,.doc,.docx,.pdf,.png,.jpeg,.jpg,.gif" style="display: none;">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="document.getElementById('authUpload').click()">Upload Document</button>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Medical Document:</strong></p>
+                        <div class="file-preview" id="medicalPreview" style="width: 100%; height: 300px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+                            <span class="text-muted" id="medicalPlaceholder">Missing</span>
+                        </div>
+                        <a href="#" id="medicalDownload" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" disabled>Download Document</a>
+                        <input type="file" id="medicalUpload" accept=".pdf,.doc,.docx,.pdf,.png,.jpeg,.jpg,.gif" style="display: none;">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="document.getElementById('medicalUpload').click()">Upload Document</button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-success" onclick="saveChanges()">Save Changes</button>
+                    <button type="button" class="btn btn-secondary ms-2">Cancel</button>
+                </div>
+
+         
+            </form>
+
+                
+        </div>
+    </div>
+`;
+
+            const form = document.getElementById('userDetailsForm');
+
+            if (form) {
+                const saveButton = form.querySelector('button[type="submit"]');
+
+                // Initially disable the Save button
+                saveButton.disabled = true;
+
+                // Add event listeners to all form inputs to detect changes
+                form.addEventListener('input', () => {
+                    saveButton.disabled = false;
+                });
+
+                form.addEventListener('change', () => {
+                    saveButton.disabled = false;
+                });
+            }
+            function getFilePreview(file) {
+                try {
+                    // Check if file is valid
+                    if (!file || typeof file !== 'string') {
+                        console.warn('Invalid or empty file:', file);
+                        return ''; // Return an empty string to show nothing
+                    }
+
+                    // Extract file extension
+                    const fileExtension = file.split('.').pop().toLowerCase();
+
+                    // Check if the file is NOT a PDF
+                    if (fileExtension !== 'pdf') {
+                        // Render non-PDF files as an image
+                        return `<img src="${file}" alt="Image Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
+                    } else {
+                        // Render PDF files with a placeholder icon
+                        return `
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <img src="https://icon-library.com/images/doc-icon/doc-icon-4.jpg" alt="PDF Icon" style="width: 80%; height: 80%; object-fit: contain;">
+                </div>`;
+                    }
+                } catch (error) {
+                    console.error('Error in getFilePreview:', error);
+                    return ''; // Return an empty string to show nothing
+                }
+            }
+
+
+
+            // Function to handle form submission
+            document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
+                e.preventDefault(); // Prevent default form submission behavior
+
+                const formData = new FormData(e.target); // Collect form data
+
+                // Add file inputs manually if they exist
+                const authUpload = document.getElementById('authUpload').files[0];
+                const medicalUpload = document.getElementById('medicalUpload').files[0];
+                if (authUpload) {
+                    formData.append('authorization_letter', authUpload);
+                }
+                if (medicalUpload) {
+                    formData.append('medical_doc', medicalUpload);
+                }
+
+                // Convert the form data to a JSON object for API compatibility
+                const updatedData = {
+                    patient_name: formData.get('patientName') || 'N/A',
+                    phone_number: formData.get('phoneNumber') || 'N/A',
+                    email_address: formData.get('emailAddress') || 'N/A',
+                    country: formData.get('country') || 'N/A',
+                    passport_no: formData.get('passportNo'),
+                    hospital: formData.get('hospital') || 'N/A',
+                    visaAssistant: formData.get('visaAssistant') || 'N/A',
+                    authorization_letter: authUpload || null, // Files can remain as-is
+                    medical_doc: medicalUpload || null,
+                    rejectReason: formData.get('rejectReason') || '',
+                };
+
+                console.log('Sending Data:', updatedData);
+
+                // API call to submit data
+                try {
+                    const response = await fetch(`https://medical-permits.vercel.app/updateData/${formData.get('referenceNumber')}`, {
+                        method: 'PUT',
+                        body: formData, // Send FormData directly if your API supports `multipart/form-data`
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('API Response:', result);
+                        alert('Data updated successfully!');
+                    } else {
+                        console.error('API Error:', response.status, response.statusText);
+                        alert('Failed to update data. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Network Error:', error);
+                    alert('An error occurred while updating the data.');
+                }
+            });
+
+            // Add event listeners for file uploads
+            document.getElementById('authUpload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    authorizationLetter = file;
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById('authPlaceholder').style.display = 'none';
+
+                    // Handle file preview based on type
+                    if (file.type.startsWith('image/')) {
+                        document.getElementById('authPreview').innerHTML = `<img src="${fileURL}" alt="Preview" style="width: 100%; height: 100%; object-fit: contain;" />`;
+                    } else if (file.type === 'application/pdf') {
+                        document.getElementById('authPreview').innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 100%;"></iframe>`;
+                    } else {
+                        document.getElementById('authPreview').innerHTML = `<p>Preview not available for this file type.</p>`;
+                    }
+
+                    document.getElementById('authDownload').href = fileURL;
+                    document.getElementById('authDownload').download = file.name;
+                    document.getElementById('authDownload').disabled = false;
+                }
+            });
+
+            document.getElementById('medicalUpload').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    medicalDoc = file;
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById('medicalPlaceholder').style.display = 'none';
+
+                    // Handle file preview based on type
+                    if (file.type.startsWith('image/')) {
+                        document.getElementById('medicalPreview').innerHTML = `<img src="${fileURL}" alt="Preview" style="width: 100%; height: 100%; object-fit: contain;" />`;
+                    } else if (file.type === 'application/pdf') {
+                        document.getElementById('medicalPreview').innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 100%;"></iframe>`;
+                    } else {
+                        document.getElementById('medicalPreview').innerHTML = `<p>Preview not available for this file type.</p>`;
+                    }
+
+                    document.getElementById('medicalDownload').href = fileURL;
+                    document.getElementById('medicalDownload').download = file.name;
+                    document.getElementById('medicalDownload').disabled = false;
+                }
+            });
+
+
+            // Create buttons for Approve, Reject, and Pending
+            const approveButton = document.createElement('button');
+            approveButton.className = 'btn btn-success btn-sm';
+            approveButton.textContent = 'Approve';
+            approveButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                approveUser(user);
+            });
+
+            const rejectButton = document.createElement('button');
+            rejectButton.className = 'btn btn-danger btn-sm';
+            rejectButton.textContent = 'Reject';
+            rejectButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                rejectUser(user);
+            });
+
+            const pendingButton = document.createElement('button');
+            pendingButton.className = 'btn btn-warning btn-sm';
+            pendingButton.textContent = 'Pending';
+            pendingButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                markAsPending(user);
+            });
+
+            // Create a div to hold the buttons
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            buttonContainer.style.display = 'flex';
+            buttonContainer.style.gap = '10px';
+            buttonContainer.style.marginTop = '20px'; // Add space above the buttons
+            buttonContainer.appendChild(approveButton);
+            buttonContainer.appendChild(rejectButton);
+            buttonContainer.appendChild(pendingButton);
+
+            // Append the button container below the details section
+            container.appendChild(buttonContainer);
+        }
+
+        // Function to handle approve action
+        async function approveUser(user) {
+            try {
+                const response = await fetch(`https://medical-permits.vercel.app/update/${user.passport_no}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'approved',  // Sending the status in the body
+                    }),
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    console.log('User approved:', data);
+                    alert('User status updated to approved!');
+                    location.reload();
+
+                } else {
+                    console.error('Error approving user:', data);
+                }
+            } catch (error) {
+                console.error('Error during approveUser:', error);
+            }
+        }
+
+        // Function to handle reject action
+        async function rejectUser(user) {
+            // Create and style the modal
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.zIndex = '2000';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = 'white';
+            modalContent.style.padding = '20px';
+            modalContent.style.borderRadius = '5px';
+            modalContent.style.width = '400px';
+            modalContent.style.textAlign = 'center';
+
+            // Create the close button
+            const closeModal = document.createElement('span');
+            closeModal.textContent = '×';
+            closeModal.style.position = 'absolute';
+            closeModal.style.top = '10px';
+            closeModal.style.right = '20px';
+            closeModal.style.fontSize = '30px';
+            closeModal.style.cursor = 'pointer';
+            closeModal.style.color = 'white';
+            modalContent.appendChild(closeModal);
+
+            // Create the textarea for rejection reason
+            const rejectionReasonInput = document.createElement('textarea');
+            rejectionReasonInput.placeholder = 'Enter reason for rejection...';
+            rejectionReasonInput.style.width = '100%';
+            rejectionReasonInput.style.height = '100px';
+            rejectionReasonInput.style.marginBottom = '20px';
+            modalContent.appendChild(rejectionReasonInput);
+
+            // Create the submit button
+            const submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit Rejection';
+            submitButton.style.backgroundColor = 'red';
+            submitButton.style.color = 'white';
+            submitButton.style.border = 'none';
+            submitButton.style.padding = '10px 20px';
+            submitButton.style.cursor = 'pointer';
+            submitButton.style.borderRadius = '5px';
+            modalContent.appendChild(submitButton);
+
+            // Append the modal content to the modal
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Close the modal when the close button is clicked
+            closeModal.onclick = () => {
+                document.body.removeChild(modal);
+            };
+
+            // Submit the rejection reason
+            submitButton.onclick = async () => {
+                const rejectionReason = rejectionReasonInput.value.trim();
+
+                if (!rejectionReason) {
+                    alert('Please provide a rejection reason.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`https://medical-permits.vercel.app/update/${user.passport_no}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            status: 'rejected',  // Sending the status in the body
+                            rejectReason: rejectionReason,  // Sending the rejection reason
+                        }),
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        console.log('User rejected:', data);
+                        alert('User status updated to rejected!');
+                        location.reload();
+
+                    } else {
+                        console.error('Error rejecting user:', data);
+                    }
+
+                    // Close the modal after submission
+                    document.body.removeChild(modal);
+                } catch (error) {
+                    console.error('Error during rejectUser:', error);
+                    alert('An error occurred while rejecting the user.');
+                }
+            };
+        }
+
+        // Function to handle pending action
+        async function markAsPending(user) {
+            try {
+                const response = await fetch(`https://medical-permits.vercel.app/update/${user.passport_no}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        status: 'pending',  // Sending the status in the body
+                    }),
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    console.log('User status set to pending:', data);
+                    alert('User status updated to pending!');
+                    location.reload();
+
+                } else {
+                    console.error('Error marking user as pending:', data);
+                }
+            } catch (error) {
+                console.error('Error during markAsPending:', error);
+            }
+        }
+
+
+        // Function to display the table when no user is selected
+        function showTable(users) {
+            const container = document.querySelector('.container.my-5');
+            if (!container) {
+                console.error('Container element not found.');
+                return;
+            }
+
+
+            // Clear existing content in the container
+            container.innerHTML = `
+        <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: #333;">Users List</h3>
+        <table class="table table-striped table-bordered table-hover" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <thead style="background-color: #007438; color: white;">
+                <tr>
+                    <th style="padding: 12px; font-weight: bold;">Reference Number</th>
+                    <th style="padding: 12px; font-weight: bold;">Patient Name</th>
+                    <th style="padding: 12px; font-weight: bold;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${users.map(user => `
+                    <tr>
+                        <td style="padding: 12px; color: #333;">${user.reference_number}</td>
+                        <td style="padding: 12px; color: #333;">${user.patient_name}</td>
+                        <td style="padding: 12px; color: #333;">${user.status}</td>
+                    </tr>`).join('')}
+            </tbody>
+        </table>
+    `;
+        }
+
+        // Function to create a list item for each user
+        function createListItem(user) {
+            // Create the list item element
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+            listItem.style.border = 'none';
+            listItem.style.backgroundColor = 'transparent';
+            listItem.style.marginBottom = '20px';
+            listItem.style.color = 'black';
+            listItem.style.cursor = 'pointer';  // Make the cursor a pointer
+
+            // Add hover effect using inline styles for background change
+            listItem.addEventListener('mouseenter', () => {
+                listItem.style.backgroundColor = '#f0f0f0';  // Change background on hover
+            });
+
+            listItem.addEventListener('mouseleave', () => {
+                listItem.style.backgroundColor = 'transparent';  // Reset the background color when the mouse leaves
+            });
+
+            // Create the span for user information
+            const userInfo = document.createElement('span');
+            userInfo.textContent = `${user.reference_number} - ${(user.patient_name && user.patient_name.trim()) ? user.patient_name : user.passport_no}`;
+
+
+            // Create the badge element
+            const badge = document.createElement('span');
+            badge.className = `badge rounded-circle ${user.status === 'rejected' ? 'bg-danger' : user.status === 'pending' ? 'bg-warning' : 'bg-success'}`;
+            badge.style.width = '10px';
+            badge.style.height = '10px';
+            badge.innerHTML = '&nbsp;'; // Add a non-breaking space to ensure the badge is visible
+
+            // Append the userInfo and badge to the list item
+            listItem.appendChild(userInfo);
+            listItem.appendChild(badge);
+
+            // Add click event listener to log the full user object
+            listItem.addEventListener('click', () => {
+                console.log('User object:', user);
+                showUserDetails(user);
+            });
+
+            return listItem;
+        }
+
+
+        document.getElementById('dashboard-title').addEventListener('click', () => {
+            const container = document.querySelector('.container.my-5');
+            if (!container) {
+                console.error('Container element not found.');
+                return;
+            }
+
+            // Clear the content in the container to remove the selected user details
+            container.innerHTML = '';
+
+            // Show the chat section again
+            // document.getElementById('messageDisplay').style.display = 'block';
+            // document.getElementById('chatInputGroup').style.display = 'block';
+
+            // Fetch and show the table again
+            renderData();  // Ensure renderData fetches and displays the table
+        });
+
+        // Function to filter and display users based on the search query
+        async function renderData() {
+            const dataList = document.getElementById('data-list');
+            if (!dataList) {
+                console.error('Element with ID "data-list" not found.');
+                return;
+            }
+
+            const users = await fetchData();
+            console.log('Fetched users:', users);
+
+            // Function to filter and render users based on the search query
+            function filterAndRenderUsers(query = '') {
+                // Filter users based on query
+                const filteredUsers = users.filter(user =>
+                    user.reference_number.toLowerCase().includes(query.toLowerCase()) ||
+                    user.patient_name.toLowerCase().includes(query.toLowerCase())
+                );
+
+                // Clear existing content
+                dataList.innerHTML = '';
+
+                // Create and append list items for each filtered user
+                filteredUsers.forEach(user => {
+                    const listItem = createListItem(user);
+                    dataList.appendChild(listItem);
+                });
+
+                // If no user is selected, show the table (optional logic)
+                showTable(filteredUsers);
+            }
+
+            // Add event listener for search input
+            document.getElementById('search-bar').addEventListener('input', (event) => {
+                const query = event.target.value; // Get search input value
+                filterAndRenderUsers(query); // Call the function to filter and render users
+            });
+
+            // Initially render all users when the page loads
+            filterAndRenderUsers('');
+        }
+
+
+
+        // Call the renderData function when the page loads
+        document.addEventListener('DOMContentLoaded', renderData);
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/01/16/13/20250116131353-SDX3HBN1.js"></script>
+
+    <!-- api for sidebar all users -->
+
 </body>
 
 </html>
