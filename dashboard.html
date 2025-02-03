@@ -225,15 +225,15 @@
             <header class="d-flex justify-content-end p-3"
                 style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; align-items: center; background-color: transparent;">
                 <!-- Notification Bell Icon -->
-                <div class="notification-icon" style="position: relative; margin-right: 20px;">
+                <!-- <div class="notification-icon" style="position: relative; margin-right: 20px;">
                     <img src="assets/Shape.svg" alt="Profile" style="width: 30px; height: 30px; ">
                     <span class="badge"
                         style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; font-size: 0.8rem; padding: 2px 5px; border-radius: 50%;">3</span>
-                </div>
+                </div> -->
                 <!-- Profile Icon -->
                 <div class="profile-icon"
-                    style="width: 30px; height: 30px; border-radius: 50%; background-color: #333333; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem; font-weight: bold;">
-                    A
+                    style="height: 30px;   display: flex; align-items: center; justify-content: center; color:#333333; font-size: 0.9rem; font-weight: bold;">
+                    Admin Dashboard
                 </div>
             </header>
             <div class="input-container d-flex flex-column align-items-center" style="max-width: 1200px; width: 100%; ">
@@ -1003,46 +1003,57 @@
     `;
         }
 
+
         // Function to create a list item for each user
         function createListItem(user) {
-            // Create the list item element
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
             listItem.style.border = 'none';
             listItem.style.backgroundColor = 'transparent';
             listItem.style.marginBottom = '20px';
-            listItem.style.color = 'black';
-            listItem.style.cursor = 'pointer';  // Make the cursor a pointer
+            listItem.style.color = 'black';  // Default text color (black)
+            listItem.style.cursor = 'pointer';
 
-            // Add hover effect using inline styles for background change
+            // Hover effect (only when the item is not active)
             listItem.addEventListener('mouseenter', () => {
-                listItem.style.backgroundColor = '#f0f0f0';  // Change background on hover
+                if (!listItem.classList.contains('active-item')) {
+                    listItem.style.backgroundColor = '#f0f0f0';
+                }
             });
 
             listItem.addEventListener('mouseleave', () => {
-                listItem.style.backgroundColor = 'transparent';  // Reset the background color when the mouse leaves
+                if (!listItem.classList.contains('active-item')) {
+                    listItem.style.backgroundColor = 'transparent';
+                }
             });
 
-            // Create the span for user information
             const userInfo = document.createElement('span');
             userInfo.textContent = `${user.reference_number} - ${(user.patient_name && user.patient_name.trim()) ? user.patient_name : user.passport_no}`;
 
-
-            // Create the badge element
             const badge = document.createElement('span');
             badge.className = `badge rounded-circle ${user.status === 'rejected' ? 'bg-danger' : user.status === 'pending' ? 'bg-warning' : 'bg-success'}`;
             badge.style.width = '10px';
             badge.style.height = '10px';
-            badge.innerHTML = '&nbsp;'; // Add a non-breaking space to ensure the badge is visible
+            badge.innerHTML = '&nbsp;';
 
-            // Append the userInfo and badge to the list item
             listItem.appendChild(userInfo);
             listItem.appendChild(badge);
 
-            // Add click event listener to log the full user object
+            // Highlight the selected item and remove from others
             listItem.addEventListener('click', () => {
-                console.log('User object:', user);
-                showUserDetails(user);
+                // Remove active class from all items
+                document.querySelectorAll('#data-list li').forEach(item => {
+                    item.classList.remove('active-item');
+                    item.style.backgroundColor = 'transparent'; // Reset background for other items
+                    item.style.color = 'black';                 // Set text color back to black for non-active items
+                });
+
+                // Add active class to the clicked item
+                listItem.classList.add('active-item');
+                listItem.style.backgroundColor = '#1a8754';  // Highlight color
+                listItem.style.color = '#fff';               // White text when active
+
+                showUserDetails(user); // Show user details
             });
 
             return listItem;
