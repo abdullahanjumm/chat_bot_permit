@@ -606,6 +606,8 @@
                         <a href="#" id="authDownload" class="btn btn-outline-primary btn-sm w-100 mt-2" target="_blank" disabled>Download Document</a>
                         <input type="file" id="authUpload" accept=".pdf,.doc,.docx,.pdf,.png,.jpeg,.jpg,.gif" style="display: none;">
                         <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" onclick="document.getElementById('authUpload').click()">Upload Document</button>
+
+
                     </div>
                     <div class="col-md-6">
                         <p><strong>Medical Document:</strong></p>
@@ -723,7 +725,7 @@
             } catch (error) {
                 console.error('Error initializing API data:', error);
             }
-
+          
             // Function to handle form submission
             document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
                 e.preventDefault(); // Prevent default form submission behavior
@@ -767,9 +769,11 @@
                         const result = await response.json();
                         console.log('API Response:', result);
                         alert('Data updated successfully!');
+                        window.location.reload();
                     } else {
                         console.error('API Error:', response.status, response.statusText);
                         alert('Failed to update data. Please try again.');
+                        window.location.reload();
                     }
                 } catch (error) {
                     console.error('Network Error:', error);
@@ -1125,8 +1129,8 @@
         // Call the renderData function when the page loads
         document.addEventListener('DOMContentLoaded', renderData);
     </script>
-    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2025/02/03/11/20250203113133-UV8I6Y2D.js"></script>
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/03/11/20250203113133-UV8I6Y2D.js"></script>
 
 
     <!-- api for sidebar all users -->
