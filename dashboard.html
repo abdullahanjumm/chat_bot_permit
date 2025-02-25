@@ -113,6 +113,9 @@
             <ul class="nav flex-column" id="data-list" style="font-size: 12px;">
                 <!-- Dynamic content will be inserted here -->
             </ul>
+            <button id="logoutButton" class="btn btn-danger ms-3">
+                Logout
+            </button>
         </div>
 
         <!-- Toggle Button for Sidebar -->
@@ -361,6 +364,10 @@
                     sendButton.click();
                 }
             });
+        });
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            localStorage.removeItem("token"); // Remove token from local storage
+            window.location.href = "index.html"; // Redirect to login page
         });
 
     </script>
@@ -725,7 +732,7 @@
             } catch (error) {
                 console.error('Error initializing API data:', error);
             }
-          
+
             // Function to handle form submission
             document.getElementById('userDetailsForm').addEventListener('submit', async (e) => {
                 e.preventDefault(); // Prevent default form submission behavior
@@ -1129,8 +1136,8 @@
         // Call the renderData function when the page loads
         document.addEventListener('DOMContentLoaded', renderData);
     </script>
-<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/02/03/11/20250203113133-UV8I6Y2D.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/03/11/20250203113133-UV8I6Y2D.js"></script>
 
 
     <!-- api for sidebar all users -->
