@@ -44,27 +44,61 @@
                 window.location.href = '/dashboard.html';
             }
         };
-
+    
         function login(event) {
             event.preventDefault(); // Prevent default form submission
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Hardcoded credentials for now
-            const hardcodedEmail = 'support@madinaBot.com';
-            const hardcodedPassword = 'Secure2025';
-
-            // Simple validation
-            if (email === hardcodedEmail && password === hardcodedPassword) {
-                // Store token in localStorage
-                localStorage.setItem('authToken', 'your-token');
-                window.location.href = '/dashboard.html'; // Redirect to dashboard
-            } else {
+    
+            // Collect the input values from the form
+            const emailInput = document.getElementById('email').value;
+            const passwordInput = document.getElementById('password').value;
+    
+            // Prepare the payload in the required JSON format.
+            // For testing with hardcoded values, you can uncomment the lines below:
+            // const payload = {
+            //     "email": "support@mohchatbot.com",
+            //     "password": "Secure2025"
+            // };
+    
+            // To use the form values, use:
+            const payload = {
+                "email": emailInput,
+                "password": passwordInput
+            };
+    
+            // API endpoint for login (replace with your actual API URL)
+            const loginUrl = 'https://medical-permits.vercel.app/signin';
+    
+            // Send a POST request with the payload
+            fetch(loginUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Login failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Assuming your API returns a token in a field called "token"
+                if (data.token) {
+                    localStorage.setItem('authToken', data.token);
+                    window.location.href = '/dashboard.html'; // Redirect to dashboard
+                } else {
+                    alert('Login failed: Token not received');
+                }
+            })
+            .catch(error => {
                 alert('Invalid email or password!');
-            }
+                console.error('Error during login:', error);
+            });
         }
     </script>
+    
+    
 </body>
 
 </html>
